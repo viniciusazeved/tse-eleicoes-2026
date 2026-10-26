@@ -698,19 +698,19 @@ with tabs[0]:
                     fig_regioes.add_bar(
                         x=regional["regiao"],
                         y=100 * parcela_corte,
-                        name="Seções da região entre as seções do corte nacional",
+                        name="Seções do corte nacional",
                         marker_color=AZUL_CLARO,
                     )
                     fig_regioes.add_bar(
                         x=regional["regiao"],
                         y=100 * regional["lula_validos"],
-                        name="Lula entre votos válidos da região",
+                        name="Lula nos válidos da região",
                         marker_color=AZUL,
                     )
                     fig_regioes.add_bar(
                         x=regional["regiao"],
                         y=100 * regional["bolsonaro_validos"],
-                        name="Flávio Bolsonaro entre votos válidos da região",
+                        name="Flávio Bolsonaro nos válidos da região",
                         marker_color=OCRE,
                     )
                     fig_regioes.update_layout(

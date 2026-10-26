@@ -16,6 +16,9 @@ VOTOS_PATH = APP_DIR / "data" / "processed" / "votos.parquet"
 ZONAS_TURNO2_PATH = APP_DIR / "data" / "processed" / "zonas_turno2.parquet"
 QA_ZONAS_TURNO2_PATH = APP_DIR / "reports" / "qa_zonas_turno2.json"
 QA_EXCECOES_PATH = APP_DIR / "data" / "processed" / "qa_excecoes.csv"
+PAREAMENTO_PATH = APP_DIR / "data" / "processed" / "pareamento_secoes.parquet"
+PAREAMENTO_RELATORIO_PATH = APP_DIR / "reports" / "pareamento_secoes.csv"
+CORTES_REGIOES_PATH = APP_DIR / "reports" / "cortes_regioes.csv"
 METODOLOGIA_PATH = APP_DIR / "METODOLOGIA.md"
 RESUMO_PATH = APP_DIR / "reports" / "resumo.json"
 MODELOS_PATH = APP_DIR / "reports" / "modelos.csv"
@@ -422,6 +425,10 @@ with st.sidebar:
         "Ler o relatório da análise",
         "https://github.com/viniciusazeved/tse-eleicoes-2026/blob/main/reports/RELATORIO.md",
     )
+    st.link_button(
+        "Ler a revisão independente",
+        "https://github.com/viniciusazeved/tse-eleicoes-2026/blob/main/docs/REVISAO_DOIS_TURNOS_SECAO.md",
+    )
     ufs_df = consultar(
         f"SELECT DISTINCT uf FROM read_parquet('{arquivo_secoes}') WHERE turno = ? ORDER BY 1",
         (int(turno),),
@@ -618,6 +625,155 @@ with tabs[0]:
         "A tabela é descritiva e usa o recorte atual. Seções de um corte mais alto também pertencem aos cortes inferiores."
     )
 
+    if uf_escolhida == "Brasil sem exterior":
+        cabecalho_secao(
+            "Participação elevada por região",
+            "Distribuição das seções brasileiras do corte entre as cinco regiões e apoio agregado entre votos válidos.",
+        )
+        if CORTES_REGIOES_PATH.exists():
+            cortes_regioes = pd.read_csv(CORTES_REGIOES_PATH)
+            colunas_regionais = {
+                "turno",
+                "regiao",
+                "corte",
+                "secoes_regiao",
+                "secoes_no_corte",
+                "secoes_corte_brasil",
+                "percentual_corte_nacional",
+                "aptos",
+                "comparecimento",
+                "abstencao",
+                "validos",
+                "brancos",
+                "nulos",
+                "lula",
+                "bolsonaro",
+                "outros",
+                "lula_validos",
+                "bolsonaro_validos",
+            }
+            if not colunas_regionais.issubset(cortes_regioes.columns):
+                st.warning(
+                    "reports/cortes_regioes.csv existe, mas não segue o contrato esperado."
+                )
+            else:
+                dados_turno_regiao = cortes_regioes.loc[
+                    cortes_regioes["turno"].eq(int(turno))
+                ].copy()
+                cortes_disponiveis = sorted(
+                    dados_turno_regiao["corte"].dropna().astype(float).unique().tolist()
+                )
+                if not cortes_disponiveis:
+                    st.info("Ainda não há cortes regionais para o turno selecionado.")
+                else:
+                    corte_regional = st.selectbox(
+                        "Corte regional de comparecimento",
+                        options=cortes_disponiveis,
+                        index=0,
+                        format_func=lambda valor: f"{100 * valor:.0f}% ou mais",
+                        key=f"corte_regional_turno_{turno}",
+                    )
+                    regional = dados_turno_regiao.loc[
+                        dados_turno_regiao["corte"].astype(float).eq(corte_regional)
+                    ].copy()
+                    ordem_regioes = [
+                        "Norte",
+                        "Nordeste",
+                        "Centro-Oeste",
+                        "Sudeste",
+                        "Sul",
+                    ]
+                    regional["regiao"] = pd.Categorical(
+                        regional["regiao"], categories=ordem_regioes, ordered=True
+                    )
+                    regional = regional.sort_values("regiao")
+                    parcela_corte = regional["percentual_corte_nacional"].astype(float)
+                    if parcela_corte.abs().max() > 1:
+                        parcela_corte = parcela_corte / 100
+                    fig_regioes = go.Figure()
+                    fig_regioes.add_bar(
+                        x=regional["regiao"],
+                        y=100 * parcela_corte,
+                        name="Seções da região entre as seções do corte nacional",
+                        marker_color=AZUL_CLARO,
+                    )
+                    fig_regioes.add_bar(
+                        x=regional["regiao"],
+                        y=100 * regional["lula_validos"],
+                        name="Lula entre votos válidos da região",
+                        marker_color=AZUL,
+                    )
+                    fig_regioes.add_bar(
+                        x=regional["regiao"],
+                        y=100 * regional["bolsonaro_validos"],
+                        name="Flávio Bolsonaro entre votos válidos da região",
+                        marker_color=OCRE,
+                    )
+                    fig_regioes.update_layout(
+                        title=f"Regiões no corte de {100 * corte_regional:.0f}% ou mais",
+                        barmode="group",
+                    )
+                    fig_regioes.update_yaxes(title="Proporção (%)", ticksuffix="%")
+                    st.plotly_chart(
+                        layout_grafico(fig_regioes, 430),
+                        width="stretch",
+                        config={"displaylogo": False},
+                    )
+                    tabela_regional = regional[
+                        [
+                            "regiao",
+                            "secoes_regiao",
+                            "secoes_no_corte",
+                            "secoes_corte_brasil",
+                            "aptos",
+                            "validos",
+                            "lula_validos",
+                            "bolsonaro_validos",
+                        ]
+                    ].copy()
+                    tabela_regional.insert(
+                        4, "parcela_corte_nacional", parcela_corte.to_numpy()
+                    )
+                    st.dataframe(
+                        tabela_regional,
+                        width="stretch",
+                        hide_index=True,
+                        column_config={
+                            "regiao": "Região",
+                            "secoes_regiao": st.column_config.NumberColumn(
+                                "Seções na região", format="localized"
+                            ),
+                            "secoes_no_corte": st.column_config.NumberColumn(
+                                "Seções da região no corte", format="localized"
+                            ),
+                            "secoes_corte_brasil": st.column_config.NumberColumn(
+                                "Seções no corte nacional", format="localized"
+                            ),
+                            "parcela_corte_nacional": st.column_config.NumberColumn(
+                                "% das seções do corte nacional", format="percent"
+                            ),
+                            "aptos": st.column_config.NumberColumn(
+                                "Aptos no corte", format="localized"
+                            ),
+                            "validos": st.column_config.NumberColumn(
+                                "Votos válidos no corte", format="localized"
+                            ),
+                            "lula_validos": st.column_config.NumberColumn(
+                                "Lula entre válidos", format="percent"
+                            ),
+                            "bolsonaro_validos": st.column_config.NumberColumn(
+                                "Flávio Bolsonaro entre válidos", format="percent"
+                            ),
+                        },
+                    )
+                    st.caption(
+                        "“% das seções do corte nacional” descreve onde estão as seções do corte. “Entre válidos” descreve a composição dos votos válidos dentro de cada região."
+                    )
+        else:
+            st.caption(
+                "A tabela regional dos cortes ainda não foi publicada nesta versão."
+            )
+
     cabecalho_secao(
         "Distribuição do comparecimento",
         "Histograma agregado em intervalos de dois pontos percentuais. Nenhum ponto representa eleitor individual.",
@@ -654,9 +810,290 @@ with tabs[0]:
 with tabs[1]:
     cabecalho_secao(
         "Seções observadas nos dois turnos",
-        "A comparação só é exibida quando os dois turnos existem na base e exige chave territorial, eleitorado apto e código do local iguais.",
+        "Pareamento pela mesma UF, município, zona e seção. O recorte principal também exige eleitorado apto e código do local iguais.",
     )
-    if not {1, 2}.issubset(set(turnos)):
+    if PAREAMENTO_PATH.exists():
+        arquivo_pareamento = _sql_path(PAREAMENTO_PATH)
+        fp_pareamento = _fingerprint(PAREAMENTO_PATH)
+        esquema_pareamento = consultar(
+            f"DESCRIBE SELECT * FROM read_parquet('{arquivo_pareamento}')",
+            (),
+            fp_pareamento,
+        )
+        colunas_pareamento = set(esquema_pareamento["column_name"].astype(str))
+        obrigatorias_pareamento = {
+            "uf",
+            "municipio_codigo",
+            "zona",
+            "secao",
+            "aptos_t1",
+            "aptos_t2",
+            "comparecimento_t1",
+            "comparecimento_t2",
+            "validos_t1",
+            "validos_t2",
+            "lula_t1",
+            "lula_t2",
+            "bolsonaro_t1",
+            "bolsonaro_t2",
+            "aptos_iguais",
+            "local_igual",
+            "elegivel",
+            "principal",
+            "delta_participacao",
+            "delta_lula_validos",
+            "delta_bolsonaro_validos",
+            "delta_lula",
+            "delta_bolsonaro",
+        }
+        faltantes_pareamento = sorted(obrigatorias_pareamento - colunas_pareamento)
+        if faltantes_pareamento:
+            st.error(
+                "O arquivo de pareamento não segue o contrato. Colunas ausentes: "
+                + ", ".join(faltantes_pareamento)
+            )
+        else:
+            recorte_pareamento = st.radio(
+                "Recorte do pareamento",
+                options=["principal", "todos_elegiveis"],
+                format_func=lambda valor: (
+                    "Principal: aptos e local iguais"
+                    if valor == "principal"
+                    else "Todas as chaves elegíveis"
+                ),
+                horizontal=True,
+            )
+            filtro_dominio, parametros_dominio = clausula_filtro(
+                None, uf_escolhida, municipio_codigo, "p"
+            )
+            criterio_recorte = (
+                "p.principal IS TRUE"
+                if recorte_pareamento == "principal"
+                else "p.elegivel IS TRUE"
+            )
+            cobertura = consultar(
+                f"""
+                SELECT COUNT(*) chaves,
+                       SUM(CASE WHEN p.elegivel IS TRUE THEN 1 ELSE 0 END) elegiveis,
+                       SUM(CASE WHEN p.principal IS TRUE THEN 1 ELSE 0 END) principais
+                FROM read_parquet('{arquivo_pareamento}') p
+                WHERE {filtro_dominio}
+                """,
+                parametros_dominio,
+                fp_pareamento,
+            ).iloc[0]
+            resumo_pareamento = consultar(
+                f"""
+                SELECT COUNT(*) secoes,
+                       SUM(p.aptos_t1) aptos_t1, SUM(p.aptos_t2) aptos_t2,
+                       SUM(p.comparecimento_t1) / NULLIF(SUM(p.aptos_t1), 0) participacao_t1,
+                       SUM(p.comparecimento_t2) / NULLIF(SUM(p.aptos_t2), 0) participacao_t2,
+                       SUM(p.lula_t1) / NULLIF(SUM(p.validos_t1), 0) lula_validos_t1,
+                       SUM(p.lula_t2) / NULLIF(SUM(p.validos_t2), 0) lula_validos_t2,
+                       SUM(p.bolsonaro_t1) / NULLIF(SUM(p.validos_t1), 0) bolsonaro_validos_t1,
+                       SUM(p.bolsonaro_t2) / NULLIF(SUM(p.validos_t2), 0) bolsonaro_validos_t2,
+                       SUM(p.delta_lula) delta_lula,
+                       SUM(p.delta_bolsonaro) delta_bolsonaro
+                FROM read_parquet('{arquivo_pareamento}') p
+                WHERE {filtro_dominio} AND {criterio_recorte}
+                """,
+                parametros_dominio,
+                fp_pareamento,
+            ).iloc[0]
+            if not int(resumo_pareamento["secoes"] or 0):
+                st.info(
+                    "Nenhuma seção pareada corresponde ao domínio e ao recorte selecionados."
+                )
+            else:
+                excluidas_principal = int(cobertura["chaves"] - cobertura["principais"])
+                pc1, pc2, pc3, pc4 = st.columns(4)
+                pc1.metric(
+                    "Chaves correspondentes", formatar_inteiro(cobertura["chaves"])
+                )
+                pc2.metric("Chaves elegíveis", formatar_inteiro(cobertura["elegiveis"]))
+                pc3.metric(
+                    "Recorte principal", formatar_inteiro(cobertura["principais"])
+                )
+                pc4.metric("Fora do principal", formatar_inteiro(excluidas_principal))
+                st.caption(
+                    "Principal significa chave correspondente com aptos e local iguais. Isso melhora a comparabilidade cadastral, mas não demonstra que as mesmas pessoas votaram nos dois turnos."
+                )
+
+                delta_participacao = 100 * (
+                    resumo_pareamento["participacao_t2"]
+                    - resumo_pareamento["participacao_t1"]
+                )
+                delta_lula_apoio = 100 * (
+                    resumo_pareamento["lula_validos_t2"]
+                    - resumo_pareamento["lula_validos_t1"]
+                )
+                delta_flavio_apoio = 100 * (
+                    resumo_pareamento["bolsonaro_validos_t2"]
+                    - resumo_pareamento["bolsonaro_validos_t1"]
+                )
+                pm1, pm2, pm3, pm4 = st.columns(4)
+                pm1.metric(
+                    "Seções no recorte",
+                    formatar_inteiro(resumo_pareamento["secoes"]),
+                )
+                pm2.metric(
+                    "Mudança no comparecimento",
+                    f"{delta_participacao:+.2f} pp".replace(".", ","),
+                )
+                pm3.metric(
+                    "Mudança no apoio a Lula",
+                    f"{delta_lula_apoio:+.2f} pp".replace(".", ","),
+                )
+                pm4.metric(
+                    "Mudança no apoio a Flávio Bolsonaro",
+                    f"{delta_flavio_apoio:+.2f} pp".replace(".", ","),
+                )
+
+                fig_pareamento = go.Figure()
+                fig_pareamento.add_bar(
+                    x=["1º turno", "2º turno"],
+                    y=[
+                        100 * resumo_pareamento["participacao_t1"],
+                        100 * resumo_pareamento["participacao_t2"],
+                    ],
+                    name="Comparecimento",
+                    marker_color=AZUL_CLARO,
+                )
+                fig_pareamento.add_bar(
+                    x=["1º turno", "2º turno"],
+                    y=[
+                        100 * resumo_pareamento["lula_validos_t1"],
+                        100 * resumo_pareamento["lula_validos_t2"],
+                    ],
+                    name="Lula entre válidos",
+                    marker_color=AZUL,
+                )
+                fig_pareamento.add_bar(
+                    x=["1º turno", "2º turno"],
+                    y=[
+                        100 * resumo_pareamento["bolsonaro_validos_t1"],
+                        100 * resumo_pareamento["bolsonaro_validos_t2"],
+                    ],
+                    name="Flávio Bolsonaro entre válidos",
+                    marker_color=OCRE,
+                )
+                fig_pareamento.update_layout(
+                    title="Participação e apoio nas mesmas chaves de seção",
+                    barmode="group",
+                )
+                fig_pareamento.update_yaxes(title="Proporção (%)", ticksuffix="%")
+                st.plotly_chart(
+                    layout_grafico(fig_pareamento),
+                    width="stretch",
+                    config={"displaylogo": False},
+                )
+
+                relacao_mudancas = consultar(
+                    f"""
+                    SELECT FLOOR(p.delta_participacao * 50) / 50 AS faixa_delta_participacao,
+                           COUNT(*) secoes,
+                           AVG(p.delta_lula_validos) delta_lula_validos,
+                           AVG(p.delta_bolsonaro_validos) delta_bolsonaro_validos
+                    FROM read_parquet('{arquivo_pareamento}') p
+                    WHERE {filtro_dominio} AND {criterio_recorte}
+                      AND p.delta_participacao IS NOT NULL
+                      AND p.delta_lula_validos IS NOT NULL
+                      AND p.delta_bolsonaro_validos IS NOT NULL
+                    GROUP BY 1 ORDER BY 1
+                    """,
+                    parametros_dominio,
+                    fp_pareamento,
+                )
+                fig_mudancas = go.Figure()
+                fig_mudancas.add_bar(
+                    x=100 * relacao_mudancas["faixa_delta_participacao"],
+                    y=relacao_mudancas["secoes"],
+                    name="Seções",
+                    marker_color=AZUL_CLARO,
+                    opacity=0.45,
+                    yaxis="y2",
+                )
+                fig_mudancas.add_scatter(
+                    x=100 * relacao_mudancas["faixa_delta_participacao"],
+                    y=100 * relacao_mudancas["delta_lula_validos"],
+                    name="Mudança média no apoio a Lula",
+                    line={"color": AZUL, "width": 3},
+                    mode="lines+markers",
+                )
+                fig_mudancas.add_scatter(
+                    x=100 * relacao_mudancas["faixa_delta_participacao"],
+                    y=100 * relacao_mudancas["delta_bolsonaro_validos"],
+                    name="Mudança média no apoio a Flávio Bolsonaro",
+                    line={"color": OCRE, "width": 3},
+                    mode="lines+markers",
+                )
+                layout_grafico(fig_mudancas, 430)
+                fig_mudancas.update_layout(
+                    title="Mudança de apoio por faixa de mudança no comparecimento",
+                    yaxis={
+                        "title": "Mudança média no apoio (pp)",
+                        "ticksuffix": " pp",
+                        "gridcolor": GRADE,
+                    },
+                    yaxis2={
+                        "title": "Número de seções",
+                        "overlaying": "y",
+                        "side": "right",
+                        "showgrid": False,
+                    },
+                )
+                fig_mudancas.update_xaxes(
+                    title="Mudança no comparecimento (pp)", ticksuffix=" pp"
+                )
+                st.plotly_chart(
+                    fig_mudancas,
+                    width="stretch",
+                    config={"displaylogo": False},
+                )
+                st.caption(
+                    "Cada ponto resume uma faixa de dois pontos percentuais de mudança no comparecimento. A média é por seção e não representa fluxo individual de eleitores."
+                )
+                st.warning(
+                    "Ganhos e perdas agregados entre turnos incluem mudanças de comparecimento e votos em candidaturas eliminadas. Eles não identificam de onde vieram ou para onde foram votos individuais."
+                )
+
+                if (
+                    PAREAMENTO_RELATORIO_PATH.exists()
+                    and uf_escolhida
+                    in {
+                        "Brasil sem exterior",
+                        "Exterior (ZZ)",
+                    }
+                    and municipio_codigo is None
+                ):
+                    correlacoes = pd.read_csv(PAREAMENTO_RELATORIO_PATH)
+                    if {"universo", "recorte"}.issubset(correlacoes.columns):
+                        universo_relatorio = (
+                            "Brasil"
+                            if uf_escolhida == "Brasil sem exterior"
+                            else "Exterior"
+                        )
+                        mascara_relatorio = correlacoes["universo"].astype(
+                            str
+                        ).str.casefold().eq(
+                            universo_relatorio.casefold()
+                        ) & correlacoes["recorte"].astype(str).str.casefold().eq(
+                            recorte_pareamento.casefold()
+                        )
+                        correlacoes_recorte = correlacoes.loc[mascara_relatorio]
+                        if not correlacoes_recorte.empty:
+                            with st.expander(
+                                "Correlações publicadas para este universo"
+                            ):
+                                st.dataframe(
+                                    correlacoes_recorte,
+                                    width="stretch",
+                                    hide_index=True,
+                                )
+                                st.caption(
+                                    "Pearson e Spearman descrevem associação entre mudanças agregadas. Não são testes de transferência individual ou fraude."
+                                )
+    elif not {1, 2}.issubset(set(turnos)):
         st.info(
             "O 2º turno ainda não está disponível nesta base. Esta área será ativada automaticamente quando os dois turnos forem processados."
         )

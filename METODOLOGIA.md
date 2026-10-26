@@ -24,6 +24,14 @@ Comparecimento dividido por aptos mede participação; abstenção dividida por 
 6. Sensibilidade ao tamanho das seções: repetir modelos em seções com pelo menos 100 aptos. Seções menores não são apagadas da base.
 7. Se ambos os turnos forem publicados, parear a chave completa e apresentar cobertura; análise principal restrita a aptos e local iguais, sem presumir identidade do eleitorado. Mudanças de votos incluem migração dos candidatos eliminados. Não atribuir os ganhos aos eleitores adicionais.
 
+## Operacionalização do pareamento
+
+A junção dos turnos é um para um pela chave UF, município TSE, zona e seção, com cobertura e chaves exclusivas registradas. Todas as chaves elegíveis exigem aptos e votos válidos positivos nos dois turnos. O recorte principal exige ainda aptos iguais e código de local válido e igual; dois valores ausentes ou sentinelas não constituem igualdade de local. Exterior e território brasileiro são apresentados separadamente. Contagens de exclusão por aptos, local e denominadores podem se sobrepor.
+
+As diferenças de comparecimento e de participação de cada finalista entre os válidos são calculadas por seção. Pearson e Spearman descrevem a associação entre essas diferenças. A média de diferenças por seção é identificada separadamente da diferença entre razões de totais agregados. Variações de votos e de comparecimento não identificam a preferência dos eleitores adicionais, nem a origem individual dos ganhos dos finalistas.
+
+O recorte regional dos cortes de alto comparecimento usa as cinco regiões do IBGE e explicita dois denominadores: o conjunto nacional de seções que atende ao corte e os votos válidos somados nas seções da região dentro do corte. As análises de apoio exigem votos válidos positivos; as tabelas exclusivamente de abstenção não precisam desse denominador.
+
 ## Horários
 
 A nota oficial do TSE de 25/10/2026 confirma prorrogação excepcional nas seções ainda não encerradas às 17h e retomada da divulgação depois das 19h. Esse fato deve ser considerado no segundo turno, além da regra ordinária de atendimento à fila.

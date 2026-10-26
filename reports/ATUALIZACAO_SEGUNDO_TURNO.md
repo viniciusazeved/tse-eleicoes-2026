@@ -1,5 +1,7 @@
 # Comparecimento do segundo turno por seção
 
+Registro da atualização parcial das 12h45 de 26/10/2026. A pendência nominal descrita abaixo foi resolvida na coleta das 14h45 do mesmo dia. O estado consolidado e a análise dos dois turnos estão no [relatório vigente](RELATORIO.md).
+
 A atualização do arquivo de detalhe por seção foi obtida em 26/10/2026. A nova fonte contém os dois turnos de 2026, com 499.248 seções em cada turno, incluindo 1.351 no exterior. Na consulta das 12h45, horário de Brasília, a resposta consultada para o arquivo nominal ainda apresentava os metadados da versão anterior. Não foi obtida uma nova versão nominal nesta atualização.
 
 Esta atualização trata exclusivamente da disponibilidade, da integridade contábil e da distribuição territorial da abstenção. As tabelas de votação do painel permanecem na versão anteriormente conferida. Não houve combinação de votos antigos com comparecimento novo.

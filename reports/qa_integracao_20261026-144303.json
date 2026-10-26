@@ -1,0 +1,764 @@
+{
+  "gerado_em": "2026-10-26T15:02:05.374723-03:00",
+  "gerado_em_utc": "2026-10-26T18:02:05.375731+00:00",
+  "comando": "scripts/stage_nominal_update.py --source-votos D:\\Projetos\\TSE\\data\\raw\\versoes\\20261026-144303\\votacao_secao_2026_BR.zip --source-detalhes D:\\Projetos\\TSE\\data\\raw\\versoes\\20261026-123844\\detalhe_votacao_secao_2026.zip --out-dir D:\\Projetos\\TSE\\data\\interim\\20261026-144303 --qa D:\\Projetos\\TSE\\reports\\qa_integracao_20261026-144303.json --secoes-anteriores D:\\Projetos\\TSE\\data\\processed\\secoes.parquet --zonas-turno2 D:\\Projetos\\TSE\\data\\processed\\zonas_turno2.parquet --json-zonas D:\\Projetos\\TSE\\data\\raw\\api_turno2\\zonas --chunk-size 250000 --qa-only",
+  "fontes": {
+    "votacao": {
+      "caminho": "D:\\Projetos\\TSE\\data\\raw\\versoes\\20261026-144303\\votacao_secao_2026_BR.zip",
+      "fonte_efetiva_versionada": "D:\\Projetos\\TSE\\data\\raw\\versoes\\20261026-144303\\votacao_secao_2026_BR.zip",
+      "raw_nao_versionado_usado": false,
+      "bytes": 241891087,
+      "sha256": "c928321f63f2d095706fca73d4607c048d2ada23bda6876455d6911aaf1bc9c1",
+      "membro": "votacao_secao_2026_BR.csv",
+      "membro_bytes_descompactados": 1578545088,
+      "manifesto_adjacente": "D:\\Projetos\\TSE\\data\\raw\\versoes\\20261026-144303\\manifesto.json",
+      "manifesto": {
+        "downloaded_at": "2026-10-26T14:45:15.0507336-03:00",
+        "canonical_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_BR.zip",
+        "request_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_BR.zip?verificacao=20261026T174303",
+        "bytes": 241891087,
+        "sha256": "c928321f63f2d095706fca73d4607c048d2ada23bda6876455d6911aaf1bc9c1",
+        "last_modified": "Mon, 26 Oct 2026 17:42:32 GMT",
+        "etag": "\"e6af70f-65ec1dac721b7\"",
+        "original_preserved": "data/raw/votacao_secao_2026_BR.zip",
+        "file": "D:\\Projetos\\TSE\\data\\raw\\versoes\\20261026-144303\\votacao_secao_2026_BR.zip"
+      }
+    },
+    "detalhe": {
+      "caminho": "D:\\Projetos\\TSE\\data\\raw\\versoes\\20261026-123844\\detalhe_votacao_secao_2026.zip",
+      "fonte_efetiva_versionada": "D:\\Projetos\\TSE\\data\\raw\\versoes\\20261026-123844\\detalhe_votacao_secao_2026.zip",
+      "raw_nao_versionado_usado": false,
+      "bytes": 234357769,
+      "sha256": "8ef9ce3a85cde260471faf7a83a9b4f5ccf3993fdda942aacaa658574344789c",
+      "membro": "detalhe_votacao_secao_2026_BR.csv",
+      "membro_bytes_descompactados": 351831261,
+      "manifesto_adjacente": "D:\\Projetos\\TSE\\data\\raw\\versoes\\20261026-123844\\manifesto.json",
+      "manifesto": {
+        "downloaded_at": "2026-10-26T12:44:34.8347311-03:00",
+        "canonical_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2026.zip",
+        "request_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2026.zip?verificacao=20261026T153535",
+        "bytes": 234357769,
+        "sha256": "8ef9ce3a85cde260471faf7a83a9b4f5ccf3993fdda942aacaa658574344789c",
+        "last_modified": "Mon, 26 Oct 2026 15:35:35 GMT",
+        "etag": "\"df80409-65ec014ca87c2\"",
+        "original_preserved": "data/raw/detalhe_votacao_secao_2026.zip",
+        "cached_response": "resposta_cache_antiga.zip",
+        "cached_response_sha256": "11a62c3a604e8b73fc328617b7688d2c635de1c76df02ba63b8f77879512f573",
+        "file": "D:\\Projetos\\TSE\\data\\raw\\versoes\\20261026-123844\\detalhe_votacao_secao_2026.zip"
+      }
+    },
+    "json_zonas": {
+      "pasta": "D:\\Projetos\\TSE\\data\\raw\\api_turno2\\zonas",
+      "arquivos": 6292,
+      "sha256_combinado_caminhos_e_conteudos": "29a9479f7cfcfb581ab7b12ddc2d5d05482ba3d4c1f35fe32e56e7ffe03ab4ed"
+    }
+  },
+  "metadados_votacao": {
+    "linhas": 5731614,
+    "turnos": [
+      1,
+      2
+    ],
+    "cargos_encontrados": [
+      [
+        "1",
+        "Presidente"
+      ]
+    ],
+    "candidatos": {
+      "13": [
+        "LUIZ INÁCIO LULA DA SILVA"
+      ],
+      "14": [
+        "RENAN ANTONIO FERREIRA DOS SANTOS"
+      ],
+      "16": [
+        "HERTZ DA CONCEICAO DIAS"
+      ],
+      "21": [
+        "EDMILSON SILVA COSTA"
+      ],
+      "22": [
+        "FLAVIO NANTES BOLSONARO"
+      ],
+      "27": [
+        "CLARIANA ZACARKIM BARAO"
+      ],
+      "28": [
+        "LEONARDO ALVES DE ARAUJO"
+      ],
+      "29": [
+        "RUI COSTA PIMENTA"
+      ],
+      "30": [
+        "ROMEU ZEMA NETO"
+      ],
+      "35": [
+        "WILSON GRASSI JUNIOR"
+      ],
+      "55": [
+        "RONALDO RAMOS CAIADO"
+      ],
+      "70": [
+        "AUGUSTO JORGE CURY"
+      ],
+      "80": [
+        "SAMARA MARTINS DA SILVA FEITOSA"
+      ],
+      "95": [
+        "VOTO BRANCO"
+      ],
+      "96": [
+        "VOTO NULO"
+      ]
+    },
+    "candidatos_por_turno": {
+      "1": {
+        "13": [
+          "LUIZ INÁCIO LULA DA SILVA"
+        ],
+        "14": [
+          "RENAN ANTONIO FERREIRA DOS SANTOS"
+        ],
+        "16": [
+          "HERTZ DA CONCEICAO DIAS"
+        ],
+        "21": [
+          "EDMILSON SILVA COSTA"
+        ],
+        "22": [
+          "FLAVIO NANTES BOLSONARO"
+        ],
+        "27": [
+          "CLARIANA ZACARKIM BARAO"
+        ],
+        "28": [
+          "LEONARDO ALVES DE ARAUJO"
+        ],
+        "29": [
+          "RUI COSTA PIMENTA"
+        ],
+        "30": [
+          "ROMEU ZEMA NETO"
+        ],
+        "35": [
+          "WILSON GRASSI JUNIOR"
+        ],
+        "55": [
+          "RONALDO RAMOS CAIADO"
+        ],
+        "70": [
+          "AUGUSTO JORGE CURY"
+        ],
+        "80": [
+          "SAMARA MARTINS DA SILVA FEITOSA"
+        ],
+        "95": [
+          "VOTO BRANCO"
+        ],
+        "96": [
+          "VOTO NULO"
+        ]
+      },
+      "2": {
+        "13": [
+          "LUIZ INÁCIO LULA DA SILVA"
+        ],
+        "22": [
+          "FLAVIO NANTES BOLSONARO"
+        ],
+        "95": [
+          "VOTO BRANCO"
+        ],
+        "96": [
+          "VOTO NULO"
+        ]
+      }
+    },
+    "anos": [
+      "2026"
+    ],
+    "tipos_eleicao": [
+      [
+        "2",
+        "Eleição Ordinária"
+      ]
+    ],
+    "eleicoes": [
+      [
+        "1",
+        "6257",
+        "Eleição Geral Federal 2026"
+      ],
+      [
+        "2",
+        "6258",
+        "Eleição Geral Federal 2026"
+      ]
+    ],
+    "geracoes": [
+      [
+        "26/10/2026",
+        "12:07:25"
+      ]
+    ],
+    "qt_votos_minimo": 1,
+    "politica_zero": "A fonte nominal só apresentou QT_VOTOS positivo. Ausência de linha para um candidato é interpretada como zero apenas na tabela larga; votos.parquet preserva exclusivamente as linhas publicadas."
+  },
+  "metadados_detalhe": {
+    "linhas": 998496,
+    "turnos": [
+      1,
+      2
+    ],
+    "cargos_encontrados": [
+      [
+        "1",
+        "Presidente"
+      ]
+    ],
+    "anos": [
+      "2026"
+    ],
+    "tipos_eleicao": [
+      [
+        "2",
+        "Eleição Ordinária"
+      ]
+    ],
+    "eleicoes": [
+      [
+        "1",
+        "6257",
+        "Eleição Geral Federal 2026"
+      ],
+      [
+        "2",
+        "6258",
+        "Eleição Geral Federal 2026"
+      ]
+    ],
+    "geracoes": [
+      [
+        "26/10/2026",
+        "09:49:06"
+      ]
+    ]
+  },
+  "candidatos": {
+    "numeros_turno2": [
+      "13",
+      "22",
+      "95",
+      "96"
+    ],
+    "numeros_esperados_turno2": [
+      "13",
+      "22",
+      "95",
+      "96"
+    ],
+    "faltantes_turno2": [],
+    "extras_turno2": [],
+    "identidades_turno2_conferidas": true,
+    "mapeamento_por_turno": {
+      "1": {
+        "13": [
+          "LUIZ INÁCIO LULA DA SILVA"
+        ],
+        "14": [
+          "RENAN ANTONIO FERREIRA DOS SANTOS"
+        ],
+        "16": [
+          "HERTZ DA CONCEICAO DIAS"
+        ],
+        "21": [
+          "EDMILSON SILVA COSTA"
+        ],
+        "22": [
+          "FLAVIO NANTES BOLSONARO"
+        ],
+        "27": [
+          "CLARIANA ZACARKIM BARAO"
+        ],
+        "28": [
+          "LEONARDO ALVES DE ARAUJO"
+        ],
+        "29": [
+          "RUI COSTA PIMENTA"
+        ],
+        "30": [
+          "ROMEU ZEMA NETO"
+        ],
+        "35": [
+          "WILSON GRASSI JUNIOR"
+        ],
+        "55": [
+          "RONALDO RAMOS CAIADO"
+        ],
+        "70": [
+          "AUGUSTO JORGE CURY"
+        ],
+        "80": [
+          "SAMARA MARTINS DA SILVA FEITOSA"
+        ],
+        "95": [
+          "VOTO BRANCO"
+        ],
+        "96": [
+          "VOTO NULO"
+        ]
+      },
+      "2": {
+        "13": [
+          "LUIZ INÁCIO LULA DA SILVA"
+        ],
+        "22": [
+          "FLAVIO NANTES BOLSONARO"
+        ],
+        "95": [
+          "VOTO BRANCO"
+        ],
+        "96": [
+          "VOTO NULO"
+        ]
+      }
+    }
+  },
+  "qa_base": {
+    "gerado_em": "2026-10-26T14:49:51.040706-03:00",
+    "gerado_em_utc": "2026-10-26T17:49:51.041706+00:00",
+    "fonte": {
+      "turnos_votacao": [
+        1,
+        2
+      ],
+      "turnos_detalhe": [
+        1,
+        2
+      ],
+      "candidatos_por_numero": {
+        "13": [
+          "LUIZ INÁCIO LULA DA SILVA"
+        ],
+        "14": [
+          "RENAN ANTONIO FERREIRA DOS SANTOS"
+        ],
+        "16": [
+          "HERTZ DA CONCEICAO DIAS"
+        ],
+        "21": [
+          "EDMILSON SILVA COSTA"
+        ],
+        "22": [
+          "FLAVIO NANTES BOLSONARO"
+        ],
+        "27": [
+          "CLARIANA ZACARKIM BARAO"
+        ],
+        "28": [
+          "LEONARDO ALVES DE ARAUJO"
+        ],
+        "29": [
+          "RUI COSTA PIMENTA"
+        ],
+        "30": [
+          "ROMEU ZEMA NETO"
+        ],
+        "35": [
+          "WILSON GRASSI JUNIOR"
+        ],
+        "55": [
+          "RONALDO RAMOS CAIADO"
+        ],
+        "70": [
+          "AUGUSTO JORGE CURY"
+        ],
+        "80": [
+          "SAMARA MARTINS DA SILVA FEITOSA"
+        ],
+        "95": [
+          "VOTO BRANCO"
+        ],
+        "96": [
+          "VOTO NULO"
+        ]
+      },
+      "cargos_votacao": [
+        [
+          "1",
+          "Presidente"
+        ]
+      ],
+      "cargos_detalhe": [
+        [
+          "1",
+          "Presidente"
+        ]
+      ],
+      "politica_zero": "A fonte nominal só apresentou QT_VOTOS positivo. Ausência de linha para um candidato é interpretada como zero apenas na tabela larga; votos.parquet preserva exclusivamente as linhas publicadas.",
+      "observacao_turno_2": "O pipeline registra apenas os turnos presentes nos ZIPs oficiais no momento da execução. Não cria linhas para turno ausente."
+    },
+    "cobertura": {
+      "linhas_secoes": 998496,
+      "linhas_votos": 5731614,
+      "turnos": [
+        1,
+        2
+      ],
+      "ufs": [
+        "AC",
+        "AL",
+        "AM",
+        "AP",
+        "BA",
+        "CE",
+        "DF",
+        "ES",
+        "GO",
+        "MA",
+        "MG",
+        "MS",
+        "MT",
+        "PA",
+        "PB",
+        "PE",
+        "PI",
+        "PR",
+        "RJ",
+        "RN",
+        "RO",
+        "RR",
+        "RS",
+        "SC",
+        "SE",
+        "SP",
+        "TO",
+        "ZZ"
+      ],
+      "secoes_por_turno": {
+        "1": 499248,
+        "2": 499248
+      },
+      "exterior": {
+        "codigo_uf": "ZZ",
+        "linhas": 2702,
+        "municipios": 186
+      }
+    },
+    "unicidade": {
+      "chave_secoes": [
+        "turno",
+        "uf",
+        "municipio_codigo",
+        "zona",
+        "secao"
+      ],
+      "duplicatas_secoes": 0,
+      "chave_votos": [
+        "turno",
+        "uf",
+        "municipio_codigo",
+        "zona",
+        "secao",
+        "numero"
+      ],
+      "duplicatas_votos": 0
+    },
+    "join": {
+      "detalhes_sem_linhas_nominais": 85,
+      "linhas_nominais_sem_detalhe": 0,
+      "join_validado": "one_to_one"
+    },
+    "checks": {
+      "aptos_igual_comparecimento_mais_abstencao": {
+        "conformes": 998414,
+        "divergentes": 82
+      },
+      "comparecimento_igual_validos_brancos_nulos_anulados": {
+        "conformes": 998496,
+        "divergentes": 0
+      },
+      "validos_igual_soma_candidatos": {
+        "conformes": 998496,
+        "divergentes": 0
+      },
+      "validos_igual_fonte_nominal": {
+        "conformes": 998496,
+        "divergentes": 0
+      },
+      "brancos_igual_fonte_nominal": {
+        "conformes": 998496,
+        "divergentes": 0
+      },
+      "nulos_igual_fonte_nominal": {
+        "conformes": 998496,
+        "divergentes": 0
+      },
+      "soma_votos_arquivo_igual_validos_brancos_nulos": {
+        "conformes": 998496,
+        "divergentes": 0
+      }
+    },
+    "faltantes": {
+      "turno": 0,
+      "uf": 0,
+      "municipio_codigo": 0,
+      "municipio_nome": 0,
+      "zona": 0,
+      "secao": 0,
+      "local_codigo": 0,
+      "local": 0,
+      "local_endereco": 0,
+      "aptos": 0,
+      "comparecimento": 0,
+      "abstencao": 0,
+      "validos": 0,
+      "brancos": 0,
+      "nulos": 0,
+      "anulados_apu_sep": 0,
+      "secao_instalada": 0,
+      "secao_anulada": 0,
+      "lula": 0,
+      "bolsonaro": 0,
+      "outros": 0,
+      "brancos_votos": 0,
+      "nulos_votos": 0,
+      "validos_votos": 0,
+      "soma_votos_arquivo": 0,
+      "participacao": 0,
+      "lula_validos": 85,
+      "bolsonaro_validos": 85,
+      "lula_aptos": 0,
+      "bolsonaro_aptos": 0
+    },
+    "ressalva_tte": "O catálogo do TSE informa 39 registros de eleitores em dupla vinculação de TTE. Nenhum valor foi subtraído das seções; os totais publicados foram preservados."
+  },
+  "reconciliacao_primeiro_turno": {
+    "chave": [
+      "turno",
+      "uf",
+      "municipio_codigo",
+      "zona",
+      "secao"
+    ],
+    "linhas_esquerda": 499248,
+    "linhas_direita": 499248,
+    "chaves_em_ambas": 499248,
+    "apenas_esquerda": 0,
+    "apenas_direita": 0,
+    "linhas_com_divergencia": 0,
+    "metricas": {
+      "aptos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "comparecimento": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "abstencao": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "validos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "brancos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "nulos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "lula": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "bolsonaro": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "outros": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      }
+    },
+    "exemplos_divergencia": []
+  },
+  "reconciliacao_segundo_turno_zonas": {
+    "chave": [
+      "turno",
+      "uf",
+      "municipio_codigo",
+      "zona"
+    ],
+    "linhas_esquerda": 6292,
+    "linhas_direita": 6292,
+    "chaves_em_ambas": 6292,
+    "apenas_esquerda": 0,
+    "apenas_direita": 0,
+    "linhas_com_divergencia": 0,
+    "metricas": {
+      "aptos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "comparecimento": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "abstencao": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "validos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "brancos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "nulos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "lula": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "bolsonaro": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "outros": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      }
+    },
+    "exemplos_divergencia": []
+  },
+  "reconciliacao_segundo_turno_json": {
+    "chave": [
+      "turno",
+      "uf",
+      "municipio_codigo",
+      "zona"
+    ],
+    "linhas_esquerda": 6292,
+    "linhas_direita": 6292,
+    "chaves_em_ambas": 6292,
+    "apenas_esquerda": 0,
+    "apenas_direita": 0,
+    "linhas_com_divergencia": 0,
+    "metricas": {
+      "aptos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "comparecimento": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "abstencao": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "validos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "brancos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "nulos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "lula": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "bolsonaro": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "outros": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      }
+    },
+    "exemplos_divergencia": []
+  },
+  "checks_integracao": {
+    "fontes_versionadas_com_manifestos_validos": true,
+    "ambos_turnos_e_cobertura": true,
+    "candidatos_turno2": true,
+    "checks_contabeis_inclusive_nominal": true,
+    "contagens_nao_negativas": true,
+    "chaves_unicas": true,
+    "pareamento_nominal_detalhe": true,
+    "excecoes_aptos_esperadas_41_por_turno": true,
+    "reconciliacoes_integrais": true
+  },
+  "politica_ausencia_zero": "A fonte nominal contém somente QT_VOTOS positivo. Ausências são convertidas em zero apenas na tabela larga após reconciliação integral de válidos, brancos e nulos com o detalhe; votos.parquet conserva apenas linhas publicadas.",
+  "staging": {
+    "diretorio": "D:\\Projetos\\TSE\\data\\interim\\20261026-144303",
+    "promovido": false
+  },
+  "limites": [
+    "Dados permanecem em staging até revisão independente.",
+    "A integração não identifica causalidade, autoria do voto ou fraude.",
+    "As 41 seções não instaladas no exterior por turno permanecem sem abstenção fabricada."
+  ],
+  "apto_para_revisao_independente": true,
+  "comando_reproducao": "uv run python scripts/stage_nominal_update.py --source-votos \"D:\\Projetos\\TSE\\data\\raw\\versoes\\20261026-144303\\votacao_secao_2026_BR.zip\" --source-detalhes \"D:\\Projetos\\TSE\\data\\raw\\versoes\\20261026-123844\\detalhe_votacao_secao_2026.zip\" --out-dir \"D:\\Projetos\\TSE\\data\\interim\\20261026-144303\" --qa \"D:\\Projetos\\TSE\\reports\\qa_integracao_20261026-144303.json\" --secoes-anteriores \"D:\\Projetos\\TSE\\data\\processed\\secoes.parquet\" --zonas-turno2 \"D:\\Projetos\\TSE\\data\\processed\\zonas_turno2.parquet\" --json-zonas \"D:\\Projetos\\TSE\\data\\raw\\api_turno2\\zonas\" --chunk-size 250000",
+  "caracterizacao_excecoes": {
+    "aptos_por_turno": {
+      "1": 41,
+      "2": 41
+    },
+    "sem_linha_nominal_por_turno": {
+      "1": 42,
+      "2": 43
+    },
+    "aptos_apenas_zz_nao_instaladas_comparecimento_e_abstencao_zero": true,
+    "sem_nominal_apenas_zz_e_comparecimento_zero": true
+  },
+  "modo_execucao": "revalidacao_snapshot_sem_reescrita_dos_parquets",
+  "hashes_staging": {
+    "secoes.parquet": "a5d0eb692f16e4077cee9317a10df94ef29f2c7ebb7b19f39ec4a898a60b71c2",
+    "votos.parquet": "99a164aee7884cf69f786be01ee8860d07857841ac1326584c6adad26759ec66"
+  }
+}

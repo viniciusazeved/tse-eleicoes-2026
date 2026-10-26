@@ -38,7 +38,14 @@ RECURSOS = {
 
 CHAVE_SECAO = ["turno", "uf", "municipio_codigo", "zona", "secao"]
 COLUNAS_VOTOS_FONTE = [
+    "DT_GERACAO",
+    "HH_GERACAO",
+    "ANO_ELEICAO",
+    "CD_TIPO_ELEICAO",
+    "NM_TIPO_ELEICAO",
     "NR_TURNO",
+    "CD_ELEICAO",
+    "DS_ELEICAO",
     "SG_UF",
     "CD_MUNICIPIO",
     "NM_MUNICIPIO",
@@ -54,7 +61,14 @@ COLUNAS_VOTOS_FONTE = [
     "DS_LOCAL_VOTACAO_ENDERECO",
 ]
 COLUNAS_DETALHE_FONTE = [
+    "DT_GERACAO",
+    "HH_GERACAO",
+    "ANO_ELEICAO",
+    "CD_TIPO_ELEICAO",
+    "NM_TIPO_ELEICAO",
     "NR_TURNO",
+    "CD_ELEICAO",
+    "DS_ELEICAO",
     "SG_UF",
     "CD_MUNICIPIO",
     "NM_MUNICIPIO",
@@ -232,12 +246,18 @@ def iterar_csv_zip(
 
 
 def normalizar_inteiro(serie: pd.Series, nome: str) -> pd.Series:
-    """Converte coluna oficial para inteiro e rejeita valor inválido."""
+    """Converte somente valores finitos e matematicamente inteiros."""
     convertido = pd.to_numeric(serie, errors="coerce")
-    if convertido.isna().any():
-        exemplos = serie[convertido.isna()].drop_duplicates().head(5).tolist()
+    invalido = convertido.isna() | ~np.isfinite(convertido) | convertido.mod(1).ne(0)
+    if invalido.any():
+        exemplos = serie[invalido].drop_duplicates().head(5).tolist()
         raise ValueError(f"Valores inválidos em {nome}: {exemplos}")
     return convertido.astype("int64")
+
+
+def normalizar_codigo(serie: pd.Series, nome: str) -> pd.Series:
+    """Normaliza código integral como texto sem zeros à esquerda."""
+    return normalizar_inteiro(serie, nome).astype("string")
 
 
 def escrever_votos(
@@ -253,7 +273,12 @@ def escrever_votos(
     linhas = 0
     turnos: set[int] = set()
     candidatos: dict[str, set[str]] = {}
+    candidatos_por_turno: dict[int, dict[str, set[str]]] = {}
     cargos: set[tuple[str, str]] = set()
+    anos: set[str] = set()
+    tipos: set[tuple[str, str]] = set()
+    eleicoes: set[tuple[str, str, str]] = set()
+    geracoes: set[tuple[str, str]] = set()
     votos_minimo: int | None = None
 
     try:
@@ -263,6 +288,31 @@ def escrever_votos(
             COLUNAS_VOTOS_FONTE,
             tamanho_chunk,
         ):
+            anos.update(bruto["ANO_ELEICAO"].unique().tolist())
+            tipos.update(
+                map(
+                    tuple,
+                    bruto[["CD_TIPO_ELEICAO", "NM_TIPO_ELEICAO"]]
+                    .drop_duplicates()
+                    .itertuples(index=False, name=None),
+                )
+            )
+            eleicoes.update(
+                map(
+                    tuple,
+                    bruto[["NR_TURNO", "CD_ELEICAO", "DS_ELEICAO"]]
+                    .drop_duplicates()
+                    .itertuples(index=False, name=None),
+                )
+            )
+            geracoes.update(
+                map(
+                    tuple,
+                    bruto[["DT_GERACAO", "HH_GERACAO"]]
+                    .drop_duplicates()
+                    .itertuples(index=False, name=None),
+                )
+            )
             cargos.update(
                 map(
                     tuple,
@@ -281,10 +331,12 @@ def escrever_votos(
                 {
                     "turno": normalizar_inteiro(presidente["NR_TURNO"], "NR_TURNO"),
                     "uf": presidente["SG_UF"],
-                    "municipio_codigo": presidente["CD_MUNICIPIO"],
-                    "zona": presidente["NR_ZONA"],
-                    "secao": presidente["NR_SECAO"],
-                    "numero": presidente["NR_VOTAVEL"],
+                    "municipio_codigo": normalizar_codigo(
+                        presidente["CD_MUNICIPIO"], "CD_MUNICIPIO"
+                    ),
+                    "zona": normalizar_codigo(presidente["NR_ZONA"], "NR_ZONA"),
+                    "secao": normalizar_codigo(presidente["NR_SECAO"], "NR_SECAO"),
+                    "numero": normalizar_codigo(presidente["NR_VOTAVEL"], "NR_VOTAVEL"),
                     "nome": presidente["NM_VOTAVEL"],
                     "votos": normalizar_inteiro(presidente["QT_VOTOS"], "QT_VOTOS"),
                 }
@@ -297,6 +349,12 @@ def escrever_votos(
                 candidatos.setdefault(str(numero), set()).update(
                     nomes.unique().tolist()
                 )
+            for (turno, numero), nomes in votos.groupby(
+                ["turno", "numero"], sort=False
+            )["nome"]:
+                candidatos_por_turno.setdefault(int(turno), {}).setdefault(
+                    str(numero), set()
+                ).update(nomes.unique().tolist())
             turnos.update(votos["turno"].unique().tolist())
             minimo_chunk = int(votos["votos"].min())
             votos_minimo = (
@@ -323,6 +381,12 @@ def escrever_votos(
 
     if linhas == 0:
         raise ValueError("Nenhuma linha de Presidente encontrada na votação por seção")
+    if anos != {"2026"}:
+        raise ValueError(f"ANO_ELEICAO inesperado na votação: {sorted(anos)}")
+    if tipos != {("2", "Eleição Ordinária")}:
+        raise ValueError(f"Tipo de eleição inesperado na votação: {sorted(tipos)}")
+    if cargos != {("1", "Presidente")}:
+        raise ValueError(f"Cargo inesperado na votação: {sorted(cargos)}")
     temporario.replace(destino)
     return {
         "linhas": linhas,
@@ -331,6 +395,16 @@ def escrever_votos(
         "candidatos": {
             numero: sorted(nomes) for numero, nomes in sorted(candidatos.items())
         },
+        "candidatos_por_turno": {
+            str(turno): {
+                numero: sorted(nomes) for numero, nomes in sorted(mapa.items())
+            }
+            for turno, mapa in sorted(candidatos_por_turno.items())
+        },
+        "anos": sorted(anos),
+        "tipos_eleicao": sorted([list(item) for item in tipos]),
+        "eleicoes": sorted([list(item) for item in eleicoes]),
+        "geracoes": sorted([list(item) for item in geracoes]),
         "qt_votos_minimo": votos_minimo,
         "politica_zero": (
             "A fonte nominal só apresentou QT_VOTOS positivo. Ausência de linha para um "
@@ -347,12 +421,41 @@ def ler_detalhes(
     """Lê o detalhe nacional de Presidente e mantém uma linha por seção."""
     partes: list[pd.DataFrame] = []
     cargos: set[tuple[str, str]] = set()
+    anos: set[str] = set()
+    tipos: set[tuple[str, str]] = set()
+    eleicoes: set[tuple[str, str, str]] = set()
+    geracoes: set[tuple[str, str]] = set()
     for bruto in iterar_csv_zip(
         zip_detalhes,
         "detalhe_votacao_secao_2026_BR.csv",
         COLUNAS_DETALHE_FONTE,
         tamanho_chunk,
     ):
+        anos.update(bruto["ANO_ELEICAO"].unique().tolist())
+        tipos.update(
+            map(
+                tuple,
+                bruto[["CD_TIPO_ELEICAO", "NM_TIPO_ELEICAO"]]
+                .drop_duplicates()
+                .itertuples(index=False, name=None),
+            )
+        )
+        eleicoes.update(
+            map(
+                tuple,
+                bruto[["NR_TURNO", "CD_ELEICAO", "DS_ELEICAO"]]
+                .drop_duplicates()
+                .itertuples(index=False, name=None),
+            )
+        )
+        geracoes.update(
+            map(
+                tuple,
+                bruto[["DT_GERACAO", "HH_GERACAO"]]
+                .drop_duplicates()
+                .itertuples(index=False, name=None),
+            )
+        )
         cargos.update(
             map(
                 tuple,
@@ -372,11 +475,15 @@ def ler_detalhes(
             {
                 "turno": normalizar_inteiro(presidente["NR_TURNO"], "NR_TURNO"),
                 "uf": presidente["SG_UF"],
-                "municipio_codigo": presidente["CD_MUNICIPIO"],
+                "municipio_codigo": normalizar_codigo(
+                    presidente["CD_MUNICIPIO"], "CD_MUNICIPIO"
+                ),
                 "municipio_nome": presidente["NM_MUNICIPIO"],
-                "zona": presidente["NR_ZONA"],
-                "secao": presidente["NR_SECAO"],
-                "local_codigo": presidente["NR_LOCAL_VOTACAO"],
+                "zona": normalizar_codigo(presidente["NR_ZONA"], "NR_ZONA"),
+                "secao": normalizar_codigo(presidente["NR_SECAO"], "NR_SECAO"),
+                "local_codigo": normalizar_codigo(
+                    presidente["NR_LOCAL_VOTACAO"], "NR_LOCAL_VOTACAO"
+                ),
                 "local": presidente["NM_LOCAL_VOTACAO"].replace("", pd.NA),
                 "local_endereco": presidente["DS_LOCAL_VOTACAO_ENDERECO"].replace(
                     "", pd.NA
@@ -409,11 +516,21 @@ def ler_detalhes(
 
     if not partes:
         raise ValueError("Nenhum detalhe de Presidente encontrado")
+    if anos != {"2026"}:
+        raise ValueError(f"ANO_ELEICAO inesperado no detalhe: {sorted(anos)}")
+    if tipos != {("2", "Eleição Ordinária")}:
+        raise ValueError(f"Tipo de eleição inesperado no detalhe: {sorted(tipos)}")
+    if cargos != {("1", "Presidente")}:
+        raise ValueError(f"Cargo inesperado no detalhe: {sorted(cargos)}")
     detalhes = pd.concat(partes, ignore_index=True)
     metadados = {
         "linhas": len(detalhes),
         "turnos": sorted(detalhes["turno"].unique().tolist()),
         "cargos_encontrados": sorted([list(item) for item in cargos]),
+        "anos": sorted(anos),
+        "tipos_eleicao": sorted([list(item) for item in tipos]),
+        "eleicoes": sorted([list(item) for item in eleicoes]),
+        "geracoes": sorted([list(item) for item in geracoes]),
     }
     return detalhes, metadados
 

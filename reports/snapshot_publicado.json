@@ -1,0 +1,47 @@
+{
+  "gerado_em": "2026-10-26T15:03:46.6733646-03:00",
+  "snapshot": "20261026-144303",
+  "status": "aprovado_para_publicacao",
+  "qa": "reports/qa_integracao_20261026-144303.json",
+  "revisao": "docs/REVISAO_DOIS_TURNOS_SECAO.md",
+  "backup_anterior": "D:\\Projetos\\TSE\\data\\interim\\snapshot_anterior_129b9a7_20261026-150345",
+  "arquivos": [
+    {
+      "path": "data/processed/secoes.parquet",
+      "bytes": 29447255,
+      "sha256": "a5d0eb692f16e4077cee9317a10df94ef29f2c7ebb7b19f39ec4a898a60b71c2"
+    },
+    {
+      "path": "data/processed/votos.parquet",
+      "bytes": 29445980,
+      "sha256": "99a164aee7884cf69f786be01ee8860d07857841ac1326584c6adad26759ec66"
+    },
+    {
+      "path": "data/processed/ufs.parquet",
+      "bytes": 13136,
+      "sha256": "ee9244be44f84b922fbff8cbdb7df2741cbede1e45e394ceaa371563c75452e4"
+    },
+    {
+      "path": "data/processed/municipios.parquet",
+      "bytes": 832376,
+      "sha256": "67bdf7a349d1fb85e8920d8d5d6d0d5be65fb8b51618647bcdef0d14cb850a08"
+    },
+    {
+      "path": "data/processed/zonas.parquet",
+      "bytes": 923967,
+      "sha256": "bc3421cd78115f576b36fb599fa73a9509fa21ceb44c71caed5fa8f02f454888"
+    },
+    {
+      "path": "data/processed/pareamento_secoes.parquet",
+      "bytes": 28931849,
+      "sha256": "d2211a8acb987881f779125d245395348af542bc809892b1652c63f56547de48"
+    },
+    {
+      "path": "data/processed/qa_excecoes.csv",
+      "bytes": 14799,
+      "sha256": "1f5eb55914da38171676afd80cf19f5951fc72b287b243e14b940d4874b4fafa"
+    }
+  ],
+  "cloud_verificada": false,
+  "aprovado_em": "2026-10-26T15:08:51.4724500-03:00"
+}

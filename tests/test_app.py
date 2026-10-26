@@ -90,6 +90,73 @@ def criar_zonas_turno2(tmp_path: Path, *, zona: str = "0001") -> Path:
     return caminho
 
 
+def criar_pareamento_secoes(tmp_path: Path) -> Path:
+    caminho = tmp_path / "data" / "processed" / "pareamento_secoes.parquet"
+    pd.DataFrame(
+        [
+            {
+                "uf": "RJ",
+                "municipio_codigo": "05809",
+                "zona": "0001",
+                "secao": "0001",
+                "municipio_nome_t1": "Barra Mansa",
+                "municipio_nome_t2": "Barra Mansa",
+                "local_codigo_t1": "0010",
+                "local_codigo_t2": "10",
+                "aptos_t1": 100,
+                "aptos_t2": 100,
+                "comparecimento_t1": 80,
+                "comparecimento_t2": 82,
+                "validos_t1": 78,
+                "validos_t2": 80,
+                "lula_t1": 40,
+                "lula_t2": 44,
+                "bolsonaro_t1": 30,
+                "bolsonaro_t2": 36,
+                "aptos_iguais": True,
+                "local_igual": True,
+                "elegivel": True,
+                "principal": True,
+                "delta_participacao": 0.02,
+                "delta_lula_validos": 44 / 80 - 40 / 78,
+                "delta_bolsonaro_validos": 36 / 80 - 30 / 78,
+                "delta_lula": 4,
+                "delta_bolsonaro": 6,
+            },
+            {
+                "uf": "RJ",
+                "municipio_codigo": "5809",
+                "zona": "1",
+                "secao": "2",
+                "municipio_nome_t1": "Barra Mansa",
+                "municipio_nome_t2": "Barra Mansa",
+                "local_codigo_t1": "10",
+                "local_codigo_t2": "11",
+                "aptos_t1": 100,
+                "aptos_t2": 100,
+                "comparecimento_t1": 80,
+                "comparecimento_t2": 79,
+                "validos_t1": 78,
+                "validos_t2": 77,
+                "lula_t1": 40,
+                "lula_t2": 42,
+                "bolsonaro_t1": 30,
+                "bolsonaro_t2": 35,
+                "aptos_iguais": True,
+                "local_igual": False,
+                "elegivel": True,
+                "principal": False,
+                "delta_participacao": -0.01,
+                "delta_lula_validos": 42 / 77 - 40 / 78,
+                "delta_bolsonaro_validos": 35 / 77 - 30 / 78,
+                "delta_lula": 2,
+                "delta_bolsonaro": 5,
+            },
+        ]
+    ).to_parquet(caminho, index=False)
+    return caminho
+
+
 def escrever_qa_zonas(
     tmp_path: Path, parquet: Path, *, apto: bool = True, sha: str | None = None
 ) -> None:
@@ -178,4 +245,28 @@ def test_pareamento_exige_aptos_e_local_iguais_e_informa_cobertura(
     assert any(
         "não demonstra que as mesmas pessoas" in legenda.value
         for legenda in app.caption
+    )
+
+
+def test_pareamento_processado_prioriza_recorte_principal(tmp_path: Path) -> None:
+    secoes = [
+        linha_secao(turno=1, secao="1", aptos=100, local_codigo="10"),
+        linha_secao(turno=1, secao="2", aptos=100, local_codigo="10"),
+        linha_secao(turno=2, secao="1", aptos=100, local_codigo="10"),
+        linha_secao(turno=2, secao="2", aptos=100, local_codigo="11"),
+    ]
+    app_path = preparar_app(tmp_path, secoes)
+    criar_pareamento_secoes(tmp_path)
+
+    app = executar(app_path)
+
+    assert not app.exception
+    metricas = {metrica.label: metrica.value for metrica in app.metric}
+    assert metricas["Chaves correspondentes"] == "2"
+    assert metricas["Chaves elegíveis"] == "2"
+    assert metricas["Recorte principal"] == "1"
+    assert metricas["Seções no recorte"] == "1"
+    assert app.radio[0].value == "principal"
+    assert any(
+        "não representa fluxo individual" in legenda.value for legenda in app.caption
     )

@@ -1,7 +1,8 @@
 {
-  "gerado_em": "2026-10-26T07:19:15.592627-03:00",
+  "gerado_em": "2026-10-26T14:53:04.787059-03:00",
   "turnos_secoes": [
-    1
+    1,
+    2
   ],
   "natureza": "Censo dos registros publicados; associações observacionais não identificam fraude.",
   "totais": [
@@ -38,7 +39,200 @@
       "lula_validos": 0.47548224347064244,
       "bolsonaro_validos": 0.4347366353982568,
       "secoes": 1351
+    },
+    {
+      "turno": 2,
+      "universo": "Brasil",
+      "aptos": 157828819,
+      "comparecimento": 127854631,
+      "abstencao": 29974188,
+      "validos": 123710622,
+      "brancos": 1425821,
+      "nulos": 2718188,
+      "lula": 64056078,
+      "bolsonaro": 59654544,
+      "outros": 0,
+      "participacao": 0.810084190010951,
+      "lula_validos": 0.5177896365277349,
+      "bolsonaro_validos": 0.48221036347226515,
+      "secoes": 497897
+    },
+    {
+      "turno": 2,
+      "universo": "Exterior",
+      "aptos": 916683,
+      "comparecimento": 381443,
+      "abstencao": 534817,
+      "validos": 371651,
+      "brancos": 4675,
+      "nulos": 5117,
+      "lula": 200154,
+      "bolsonaro": 171497,
+      "outros": 0,
+      "participacao": 0.416112222000408,
+      "lula_validos": 0.5385536430683625,
+      "bolsonaro_validos": 0.4614463569316375,
+      "secoes": 1351
     }
   ],
-  "comparacao_turnos_secoes": "pendente: segundo turno ainda ausente no arquivo por seção"
+  "comparacao_turnos_secoes": "disponivel",
+  "pareamento_turnos_secoes": {
+    "status": "disponivel",
+    "chave": [
+      "uf",
+      "municipio_codigo",
+      "zona",
+      "secao"
+    ],
+    "cobertura_join": {
+      "both": 499248,
+      "left_only": 0,
+      "right_only": 0
+    },
+    "cobertura": [
+      {
+        "universo": "Brasil",
+        "secoes_t1": 497897,
+        "secoes_t2": 497897,
+        "pareadas": 497897,
+        "exclusivas_t1": 0,
+        "exclusivas_t2": 0,
+        "aptos_diferentes": 55406,
+        "local_invalido": 0,
+        "local_diferente_valido": 431,
+        "inelegiveis": 0,
+        "elegiveis": 497897,
+        "principal": 442108
+      },
+      {
+        "universo": "Exterior",
+        "secoes_t1": 1351,
+        "secoes_t2": 1351,
+        "pareadas": 1351,
+        "exclusivas_t1": 0,
+        "exclusivas_t2": 0,
+        "aptos_diferentes": 316,
+        "local_invalido": 0,
+        "local_diferente_valido": 0,
+        "inelegiveis": 43,
+        "elegiveis": 1308,
+        "principal": 992
+      }
+    ],
+    "resultados": [
+      {
+        "universo": "Brasil",
+        "recorte": "todos_elegiveis",
+        "candidato": "lula",
+        "secoes": 497897,
+        "pearson": 0.10908879541663634,
+        "spearman": 0.10342660181460393,
+        "delta_participacao_medio_pp": 1.7080065620572633,
+        "delta_apoio_medio_pp": 6.4287745534709755,
+        "delta_participacao_agregada_pp": 1.8505365266940799,
+        "delta_apoio_agregado_pp": 6.624823787003842,
+        "delta_comparecimento_total": 2920562,
+        "delta_votos_total": 10333927
+      },
+      {
+        "universo": "Brasil",
+        "recorte": "todos_elegiveis",
+        "candidato": "bolsonaro",
+        "secoes": 497897,
+        "pearson": 0.01656154717569181,
+        "spearman": -0.008394322850180687,
+        "delta_participacao_medio_pp": 1.7080065620572633,
+        "delta_apoio_medio_pp": 1.2358150675580934,
+        "delta_participacao_agregada_pp": 1.8505365266940799,
+        "delta_apoio_agregado_pp": 1.1854495771657148,
+        "delta_comparecimento_total": 2920562,
+        "delta_votos_total": 3693941
+      },
+      {
+        "universo": "Brasil",
+        "recorte": "principal",
+        "candidato": "lula",
+        "secoes": 442108,
+        "pearson": 0.11143907176805948,
+        "spearman": 0.10685099955044687,
+        "delta_participacao_medio_pp": 1.7096065872547912,
+        "delta_apoio_medio_pp": 6.40900331868098,
+        "delta_participacao_agregada_pp": 1.8569727494639587,
+        "delta_apoio_agregado_pp": 6.609497689865018,
+        "delta_comparecimento_total": 2586997,
+        "delta_votos_total": 9154010
+      },
+      {
+        "universo": "Brasil",
+        "recorte": "principal",
+        "candidato": "bolsonaro",
+        "secoes": 442108,
+        "pearson": 0.01683182872858332,
+        "spearman": -0.006308341176943852,
+        "delta_participacao_medio_pp": 1.7096065872547912,
+        "delta_apoio_medio_pp": 1.138724108738803,
+        "delta_participacao_agregada_pp": 1.8569727494639587,
+        "delta_apoio_agregado_pp": 1.0810931526626544,
+        "delta_comparecimento_total": 2586997,
+        "delta_votos_total": 3178681
+      },
+      {
+        "universo": "Exterior",
+        "recorte": "todos_elegiveis",
+        "candidato": "lula",
+        "secoes": 1308,
+        "pearson": 0.10131655062020284,
+        "spearman": 0.10692286873849087,
+        "delta_participacao_medio_pp": 4.16578921372593,
+        "delta_apoio_medio_pp": 6.1950424448902695,
+        "delta_participacao_agregada_pp": 4.324953548458865,
+        "delta_apoio_agregado_pp": 6.307456886057588,
+        "delta_comparecimento_total": 39679,
+        "delta_votos_total": 42769
+      },
+      {
+        "universo": "Exterior",
+        "recorte": "todos_elegiveis",
+        "candidato": "bolsonaro",
+        "secoes": 1308,
+        "pearson": -0.2927878600928107,
+        "spearman": -0.3068558638672648,
+        "delta_participacao_medio_pp": 4.16578921372593,
+        "delta_apoio_medio_pp": 2.758713103009757,
+        "delta_participacao_agregada_pp": 4.324953548458865,
+        "delta_apoio_agregado_pp": 2.670709474972371,
+        "delta_comparecimento_total": 39679,
+        "delta_votos_total": 27597
+      },
+      {
+        "universo": "Exterior",
+        "recorte": "principal",
+        "candidato": "lula",
+        "secoes": 992,
+        "pearson": 0.10085644887644425,
+        "spearman": 0.11683500335791848,
+        "delta_participacao_medio_pp": 3.9191138809316053,
+        "delta_apoio_medio_pp": 6.024398470893127,
+        "delta_participacao_agregada_pp": 4.083248008481655,
+        "delta_apoio_agregado_pp": 6.155360329768484,
+        "delta_comparecimento_total": 28115,
+        "delta_votos_total": 29038
+      },
+      {
+        "universo": "Exterior",
+        "recorte": "principal",
+        "candidato": "bolsonaro",
+        "secoes": 992,
+        "pearson": -0.2878306660090625,
+        "spearman": -0.32166962969857454,
+        "delta_participacao_medio_pp": 3.9191138809316053,
+        "delta_apoio_medio_pp": 2.9715399081800524,
+        "delta_participacao_agregada_pp": 4.083248008481655,
+        "delta_apoio_agregado_pp": 2.948701533616549,
+        "delta_comparecimento_total": 28115,
+        "delta_votos_total": 21764
+      }
+    ],
+    "limites": "Exclusões cadastrais podem se sobrepor. Igualdade de aptos e local não comprova identidade do eleitorado. Diferenças agregadas não identificam fluxos individuais, origem de votos ou fraude. Médias por seção diferem de diferenças entre razões agregadas."
+  }
 }

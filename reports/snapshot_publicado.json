@@ -1,7 +1,7 @@
 {
   "gerado_em": "2026-10-26T15:03:46.6733646-03:00",
   "snapshot": "20261026-144303",
-  "status": "aprovado_para_publicacao",
+  "status": "publicado_validado_acesso_direto",
   "qa": "reports/qa_integracao_20261026-144303.json",
   "revisao": "docs/REVISAO_DOIS_TURNOS_SECAO.md",
   "backup_anterior": "D:\\Projetos\\TSE\\data\\interim\\snapshot_anterior_129b9a7_20261026-150345",
@@ -42,6 +42,19 @@
       "sha256": "1f5eb55914da38171676afd80cf19f5951fc72b287b243e14b940d4874b4fafa"
     }
   ],
-  "cloud_verificada": false,
-  "aprovado_em": "2026-10-26T15:08:51.4724500-03:00"
+  "cloud_verificada": true,
+  "aprovado_em": "2026-10-26T15:08:51.47245-03:00",
+  "verificado_em": "2026-10-26T15:36:22.7090107-03:00",
+  "commit_dados": "66904822b2a1847182401eeb186ad7ff2c73d8c9",
+  "commit_codigo_validado": "49e21ccd8399b8a86a27196861a90ae2d4533ddd",
+  "url_validada": "https://observatorio-voto-2026.streamlit.app/~/+/",
+  "evidencia_visual": "reports/screenshots/regioes_turno2_95_20261026.png",
+  "conferencias": [
+    "Primeiro e segundo turnos por seção",
+    "Totais do Brasil no segundo turno",
+    "Corte regional de 95% com cinco regiões",
+    "Pareamento principal de 442108 seções brasileiras",
+    "Legendas e títulos separados após ajuste visual"
+  ],
+  "limite_interface": "Página externa canônica do Streamlit permaneceu no carregamento, inclusive após reboot e nova aba. Aplicação pública interna /~/+/ abriu e funcionou; este é o endereço validado. Não foi demonstrada falta de memória ou erro Python na nuvem."
 }

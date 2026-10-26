@@ -2,7 +2,9 @@
 
 Dados públicos do TSE sobre comparecimento e votação para Presidente, com exploração por seção, zona, município e UF. Projeto independente, sem vínculo institucional com a Justiça Eleitoral.
 
-[Abrir o painel publicado](https://observatorio-voto-2026.streamlit.app/) · [Ler o relatório](reports/RELATORIO.md) · [Conferência dos dois turnos](docs/REVISAO_DOIS_TURNOS_SECAO.md)
+[Abrir o painel publicado](https://observatorio-voto-2026.streamlit.app/~/+/) · [Ler o relatório](reports/RELATORIO.md) · [Conferência dos dois turnos](docs/REVISAO_DOIS_TURNOS_SECAO.md)
+
+O link usa o acesso direto à aplicação, conferido visualmente na nuvem. Na publicação de 26/10, a página externa do Streamlit permaneceu no carregamento, enquanto o acesso direto funcionou. Registro da versão e da conferência: [snapshot_publicado.json](reports/snapshot_publicado.json).
 
 A hipótese examinada é a associação entre participação eleitoral e apoio às candidaturas. Padrões estatísticos não identificam voto em nome de ausentes. Horários dos logs não revelam candidato. Consulte [METODOLOGIA.md](METODOLOGIA.md).
 

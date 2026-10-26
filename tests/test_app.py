@@ -118,7 +118,9 @@ def test_zonas_normalizam_municipio_e_zona_apos_qa(tmp_path: Path) -> None:
     metricas = {metrica.label: metrica.value for metrica in app.metric}
     assert metricas["Zonas correspondentes"] == "1"
     assert len(app.get("plotly_chart")) == 3
-    assert any("conferida por SHA256" in sucesso.value for sucesso in app.success)
+    assert any(
+        "conferidos com os totais oficiais" in sucesso.value for sucesso in app.success
+    )
 
 
 def test_zonas_ficam_bloqueadas_quando_sha_nao_confere(tmp_path: Path) -> None:

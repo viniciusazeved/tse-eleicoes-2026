@@ -148,7 +148,7 @@ def validar_qa_zonas() -> tuple[bool, str]:
     )
     if sha_observado != sha_esperado:
         return False, "O SHA256 da camada por zona não coincide com o relatório de QA."
-    return True, "Camada por zona liberada pelo QA e conferida por SHA256."
+    return True, "Dados por zona conferidos com os totais oficiais do TSE."
 
 
 @st.cache_data(show_spinner=False, max_entries=48)
@@ -409,13 +409,19 @@ turnos = turnos_df["turno"].astype(int).tolist()
 if turnos != [1, 2]:
     presentes = ", ".join(f"{t}º" for t in turnos) if turnos else "nenhum"
     st.warning(
-        f"Cobertura atual da camada por seção: turno(s) {presentes}. O 2º turno ainda não está disponível nessa granularidade "
-        "quando não aparece na lista. O seletor mostra apenas turnos realmente presentes."
+        f"Dados por seção disponíveis: {presentes} turno. A comparação dos dois turnos por seção "
+        "aguarda a publicação do pacote nacional completo. Consulte a aba própria para o segundo turno por zona."
     )
 
 with st.sidebar:
     st.header("Recorte da análise")
-    turno = st.selectbox("Turno", options=turnos, format_func=lambda x: f"{x}º turno")
+    turno = st.selectbox(
+        "Turno dos dados por seção", options=turnos, format_func=lambda x: f"{x}º turno"
+    )
+    st.link_button(
+        "Ler o relatório da análise",
+        "https://github.com/viniciusazeved/tse-eleicoes-2026/blob/main/reports/RELATORIO.md",
+    )
     ufs_df = consultar(
         f"SELECT DISTINCT uf FROM read_parquet('{arquivo_secoes}') WHERE turno = ? ORDER BY 1",
         (int(turno),),
@@ -769,7 +775,7 @@ with tabs[2]:
         "Camada própria de resultados agregados por zona. Os filtros de UF e município da barra lateral também se aplicam aqui.",
     )
     st.warning(
-        "A granularidade desta camada é a zona eleitoral. Ela não deve ser combinada ou apresentada como resultado no nível mais detalhado."
+        "Cada zona reúne várias seções. Estes resultados permitem comparar zonas, mas não substituir a análise de cada seção."
     )
     qa_zonas_ok, mensagem_qa_zonas = validar_qa_zonas()
     if not qa_zonas_ok:

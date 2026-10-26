@@ -199,6 +199,9 @@ def layout_grafico(fig: go.Figure, altura: int = 390) -> go.Figure:
         },
         legend={
             "orientation": "h",
+            "entrywidth": 0.31,
+            "entrywidthmode": "fraction",
+            "font": {"family": "Arial, sans-serif", "size": 12},
             "yanchor": "bottom",
             "y": 1.08,
             "xanchor": "left",

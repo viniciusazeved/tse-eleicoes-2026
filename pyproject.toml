@@ -1,0 +1,13 @@
+[project]
+name = "observatorio-voto-2026"
+version = "0.1.0"
+description = "Análise reproduzível de comparecimento e votação presidencial por seção"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "pandas>=2.2,<3", "pyarrow>=18", "numpy>=2", "scipy>=1.14",
+  "statsmodels>=0.14", "streamlit>=1.50", "plotly>=6",
+  "requests>=2.32", "duckdb>=1.2"
+]
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.11"]

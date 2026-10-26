@@ -1,0 +1,44 @@
+{
+  "gerado_em": "2026-10-26T07:19:15.592627-03:00",
+  "turnos_secoes": [
+    1
+  ],
+  "natureza": "Censo dos registros publicados; associações observacionais não identificam fraude.",
+  "totais": [
+    {
+      "turno": 1,
+      "universo": "Brasil",
+      "aptos": 157828968,
+      "comparecimento": 124934069,
+      "abstencao": 32894899,
+      "validos": 118975029,
+      "brancos": 2294982,
+      "nulos": 3664058,
+      "lula": 53722151,
+      "bolsonaro": 55960603,
+      "outros": 9292275,
+      "participacao": 0.7915788247440102,
+      "lula_validos": 0.4515413986576965,
+      "bolsonaro_validos": 0.470355867700608,
+      "secoes": 497897
+    },
+    {
+      "turno": 1,
+      "universo": "Exterior",
+      "aptos": 916534,
+      "comparecimento": 341766,
+      "abstencao": 574345,
+      "validos": 331005,
+      "brancos": 5816,
+      "nulos": 4945,
+      "lula": 157387,
+      "bolsonaro": 143900,
+      "outros": 29718,
+      "participacao": 0.3728896036590023,
+      "lula_validos": 0.47548224347064244,
+      "bolsonaro_validos": 0.4347366353982568,
+      "secoes": 1351
+    }
+  ],
+  "comparacao_turnos_secoes": "pendente: segundo turno ainda ausente no arquivo por seção"
+}

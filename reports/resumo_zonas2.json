@@ -1,0 +1,166 @@
+{
+  "gerado_em": "2026-10-26T07:27:25.285264-03:00",
+  "granularidade": "município/zona, não seção",
+  "cobertura_join": {
+    "both": 6292,
+    "left_only": 0,
+    "right_only": 0
+  },
+  "resultados": [
+    {
+      "universo": "Brasil",
+      "zonas_pareadas": 6106,
+      "zonas_aptos_iguais": 1878,
+      "totais": {
+        "1": {
+          "aptos": 157828968,
+          "comparecimento": 124934069,
+          "abstencao": 32894899,
+          "validos": 118975029,
+          "brancos": 2294982,
+          "nulos": 3664058,
+          "lula": 53722151,
+          "bolsonaro": 55960603,
+          "outros": 9292275
+        },
+        "2": {
+          "aptos": 157828819,
+          "comparecimento": 127854631,
+          "abstencao": 29974188,
+          "validos": 123710622,
+          "brancos": 1425821,
+          "nulos": 2718188,
+          "lula": 64056078,
+          "bolsonaro": 59654544,
+          "outros": 0
+        }
+      },
+      "correlacoes": [
+        {
+          "tipo": "entre_zonas",
+          "turno": 1,
+          "candidato": "lula",
+          "n": 6106,
+          "pearson": 0.02596718680531921,
+          "spearman": 0.045339716389138474
+        },
+        {
+          "tipo": "entre_zonas",
+          "turno": 2,
+          "candidato": "lula",
+          "n": 6106,
+          "pearson": -0.06102681294113375,
+          "spearman": -0.03820500060827974
+        },
+        {
+          "tipo": "diferenca_turnos_aptos_iguais",
+          "candidato": "lula",
+          "n": 1878,
+          "pearson": 0.02622525150159329,
+          "spearman": 0.08186501500825412
+        },
+        {
+          "tipo": "entre_zonas",
+          "turno": 1,
+          "candidato": "bolsonaro",
+          "n": 6106,
+          "pearson": -0.013628901869118958,
+          "spearman": -0.04328132786813428
+        },
+        {
+          "tipo": "entre_zonas",
+          "turno": 2,
+          "candidato": "bolsonaro",
+          "n": 6106,
+          "pearson": 0.06102681294113375,
+          "spearman": 0.03820500060827974
+        },
+        {
+          "tipo": "diferenca_turnos_aptos_iguais",
+          "candidato": "bolsonaro",
+          "n": 1878,
+          "pearson": 0.04933379136809302,
+          "spearman": 0.025622495369322693
+        }
+      ]
+    },
+    {
+      "universo": "Exterior",
+      "zonas_pareadas": 186,
+      "zonas_aptos_iguais": 132,
+      "totais": {
+        "1": {
+          "aptos": 916534,
+          "comparecimento": 341766,
+          "abstencao": 574345,
+          "validos": 331005,
+          "brancos": 5816,
+          "nulos": 4945,
+          "lula": 157387,
+          "bolsonaro": 143900,
+          "outros": 29718
+        },
+        "2": {
+          "aptos": 916683,
+          "comparecimento": 381443,
+          "abstencao": 534817,
+          "validos": 371651,
+          "brancos": 4675,
+          "nulos": 5117,
+          "lula": 200154,
+          "bolsonaro": 171497,
+          "outros": 0
+        }
+      },
+      "correlacoes": [
+        {
+          "tipo": "entre_zonas",
+          "turno": 1,
+          "candidato": "lula",
+          "n": 144,
+          "pearson": 0.09343472703073757,
+          "spearman": 0.15120428906274777
+        },
+        {
+          "tipo": "entre_zonas",
+          "turno": 2,
+          "candidato": "lula",
+          "n": 144,
+          "pearson": 0.10433049414196476,
+          "spearman": 0.1684822471011543
+        },
+        {
+          "tipo": "diferenca_turnos_aptos_iguais",
+          "candidato": "lula",
+          "n": 90,
+          "pearson": -0.09902252475602201,
+          "spearman": -0.02639811661936016
+        },
+        {
+          "tipo": "entre_zonas",
+          "turno": 1,
+          "candidato": "bolsonaro",
+          "n": 144,
+          "pearson": -0.07125957764256803,
+          "spearman": -0.13191503470952956
+        },
+        {
+          "tipo": "entre_zonas",
+          "turno": 2,
+          "candidato": "bolsonaro",
+          "n": 144,
+          "pearson": -0.10433049414196477,
+          "spearman": -0.1684822471011543
+        },
+        {
+          "tipo": "diferenca_turnos_aptos_iguais",
+          "candidato": "bolsonaro",
+          "n": 90,
+          "pearson": 0.05433108605604688,
+          "spearman": 0.04146788278572838
+        }
+      ]
+    }
+  ],
+  "limites": "A comparação não identifica transferência individual de votos, preferência dos novos comparecentes nem votos tardios. Exterior inclui aptos de seções não instaladas; a taxa aqui usa todos os registros aptos e não reproduz necessariamente a taxa oficial de eleitorado instalado."
+}

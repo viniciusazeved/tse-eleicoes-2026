@@ -1,0 +1,35 @@
+{
+  "gerado_em": "2026-10-26T07:27:56.383322-03:00",
+  "catalogo_url": "https://dadosabertos.tse.jus.br/api/3/action/package_show?id=resultados-2026",
+  "catalogo_metadata_modified": "2026-10-08T13:50:26.624557",
+  "catalogo_notas": "Relatórios de totalização - Detalhe da apuração por município e zona/seção - Votação nominal/partido por município e zona - Votação por seção eleitoral\r\n\r\n***                 \r\n__Informação importante:__\r\nDurante o processo de transferência temporária de eleitoras e eleitores, 39 registros permaneceram também vinculados às respectivas seções de origem. Em razão disso, os arquivos de resultados e de TTE apresentam o quantitativo de 158.745.502 registros de eleitoras e eleitores aptos.\r\nPara fins de apuração do quantitativo efetivo de eleitoras e eleitores aptos, esses 39 registros devem ser desconsiderados, resultando no total de 158.745.463 eleitoras e eleitores.\r\n\r\n***                 \r\n__ATENÇÃO!__\r\n\r\nUTILIZE SOFTWARE ADEQUADO PARA A COMPLETA VISUALIZAÇÃO DOS DADOS!\r\n\r\nArquivos de dados com um grande número de linhas (particularmente aqueles com extensão .csv e .txt) podem não ser visualizados em sua totalidade a depender do software utilizado. Por exemplo, o Microsoft Excel tem limitação de 1.048.576 linhas. Para evitar o carregamento incompleto do arquivo, utilize softwares com suporte para abrir grande volume de dados ou aplique técnicas específicas para seu processamento.\r\n\r\nConfira algumas alternativas a seguir:\r\n\r\nUse ferramentas de análise estatística, de Business Intelligence (BI), de banco de dados ou de análise de dados;\r\nAbra o arquivo no Excel usando a opção Obter Dados: utilize o Power Query para carregar o conjunto de dados completo e analisá-lo com tabelas dinâmicas;\r\nUse programas de editores de texto com suporte para grandes volumes de dados;\r\nUse qualquer outra ferramenta que suporte arquivos de grande volume de dados.",
+  "ressalva_tte": "O catálogo informa 39 registros em dupla vinculação de TTE. Os arquivos são preservados integralmente e nenhuma seção é ajustada.",
+  "downloads": [
+    {
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_BR.zip",
+      "arquivo": "votacao_secao_2026_BR.zip",
+      "bytes": 161616519,
+      "sha256": "2d42006d0f6c6e00bad83f5c23cd3d78cd3e3182dbc1ad6718222b6b132c23e1",
+      "acao": "reutilizado_local"
+    },
+    {
+      "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/detalhe_votacao_secao/detalhe_votacao_secao_2026.zip",
+      "arquivo": "detalhe_votacao_secao_2026.zip",
+      "bytes": 176923175,
+      "sha256": "11a62c3a604e8b73fc328617b7688d2c635de1c76df02ba63b8f77879512f573",
+      "acao": "reutilizado_local"
+    }
+  ],
+  "arquivos_zip_presentes": [
+    {
+      "arquivo": "detalhe_votacao_secao_2026.zip",
+      "bytes": 176923175,
+      "sha256": "11a62c3a604e8b73fc328617b7688d2c635de1c76df02ba63b8f77879512f573"
+    },
+    {
+      "arquivo": "votacao_secao_2026_BR.zip",
+      "bytes": 161616519,
+      "sha256": "2d42006d0f6c6e00bad83f5c23cd3d78cd3e3182dbc1ad6718222b6b132c23e1"
+    }
+  ]
+}

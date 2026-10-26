@@ -1,0 +1,43 @@
+﻿turno,uf,municipio_codigo,zona,secao,municipio_nome,local_codigo,local,aptos,comparecimento,abstencao,validos,brancos,nulos,anulados_apu_sep,secao_instalada,secao_anulada,falha_aptos_igual_comparecimento_mais_abstencao,sem_linha_nominal_publicada,delta_aptos,observacao
+1,ZZ,99171,1,3126,BAGDÁ,1015,BAGDÁ,10,0,0,0,0,0,0,Não,Não,True,True,10,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99333,1,3188,ST GEORGES DE LOYAPOCK,1015,ST GEORGES DE LOYAPOCK,10,0,0,0,0,0,0,Não,Não,True,True,10,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99350,1,1236,BAMAKO,1015,BAMAKO,5,0,0,0,0,0,0,Não,Não,True,True,5,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,29521,1,83,CHUY,1015,CHUÍ,27,0,0,0,0,0,0,Não,Não,True,True,27,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99341,1,1308,LILONGUE,1015,LILONGUE,6,0,0,0,0,0,0,Não,Não,True,True,6,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,39263,1,961,MALABO,1015,MALABO,5,0,0,0,0,0,0,Não,Não,True,True,5,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,29769,1,126,HARARE,1015,HARARE,7,0,0,0,0,0,0,Não,Não,True,True,7,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,30988,1,725,SARAJEVO,1015,SARAJEVO,9,0,0,0,0,0,0,Não,Não,True,True,9,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,38989,1,1841,IEREVAN,1015,IEREVAN,13,0,0,0,0,0,0,Não,Não,True,True,13,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99198,1,2947,ABUJA,1023,ABUJA - NIGÉRIA,3,0,0,0,0,0,0,Não,Não,True,True,3,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99325,1,3016,ADIS ABEBA,1015,ADIS ABEBA,3,0,0,0,0,0,0,Não,Não,True,True,3,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99295,1,3485,PYONGYANG,1015,PYONGYANG,1,0,0,0,0,0,0,Não,Não,True,True,1,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,39241,1,714,ASTANA,1015,ASTANA KAZAQUISTÃO,13,0,0,0,0,0,0,Não,Não,True,True,13,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,29823,1,141,IQUITOS,1015,IQUITOS,17,0,0,0,0,0,0,Não,Não,True,True,17,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,30988,1,1354,SARAJEVO,1040,CANTÃO DE ZENICA-DOBOJ,2,0,0,0,0,0,0,Não,Não,True,True,2,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,39284,1,773,UAGADUGU,1015,UAGADUGU - BURKINA FASO,6,0,0,0,0,0,0,Não,Não,True,True,6,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,29874,1,146,KINSHASA,1015,EMBAIXADA DO BRASIL EM KINSHASA,27,0,0,0,0,0,0,Não,Não,True,True,27,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,29629,1,3014,DACCA,1023,DACCA E OUTROS LOCAIS DE BANGLADESH,1,0,0,0,0,0,0,Não,Não,True,True,1,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,29564,1,91,CIUDAD GUAYANA,1015,EMBAIXADA EM CARACAS,72,0,72,0,0,0,0,Sim,Não,False,True,0,"Seção instalada no exterior, sem comparecimento e sem votação nominal."
+1,ZZ,38881,1,548,BELMOPAN,1015,BELMOPAN,13,0,0,0,0,0,0,Não,Não,True,True,13,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,39225,1,931,SÃO TOMÉ,1015,SÃO TOMÉ,18,0,0,0,0,0,0,Não,Não,True,True,18,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,29815,1,140,IAUNDÊ,1015,IAUNDÊ,14,0,0,0,0,0,0,Não,Não,True,True,14,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,38903,1,603,CONACRI,1015,CONACRI,5,0,0,0,0,0,0,Não,Não,True,True,5,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,39128,1,3208,BAKU,1015,BAKU,5,0,0,0,0,0,0,Não,Não,True,True,5,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99287,1,1259,LUSACA,1015,LUSACA,25,0,0,0,0,0,0,Não,Não,True,True,25,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99279,1,3698,SANTA ELENA DE UAIRÉN,1015,SANTA ELENA DE UAIRÉN,1,0,0,0,0,0,0,Não,Não,True,True,1,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,30929,1,722,COLOMBO,1015,COLOMBO,12,0,0,0,0,0,0,Não,Não,True,True,12,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99384,1,2876,CASTRIES,1023,CASTRIES E OUTROS LOCAIS DE SANTA LÚCIA,7,0,0,0,0,0,0,Não,Não,True,True,7,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,30669,1,546,GABORONE,1015,GABORONE BOTSWANA,10,0,0,0,0,0,0,Não,Não,True,True,10,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99210,1,3013,COBIJA,1015,COBIJA,1,0,0,0,0,0,0,Não,Não,True,True,1,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99147,1,3049,SAINT JOHNS,1015,SAINT JOHNS,1,0,0,0,0,0,0,Não,Não,True,True,1,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99244,1,2917,RIVERA,1015,RIVERA,19,0,0,0,0,0,0,Não,Não,True,True,19,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,29424,1,54,BRIDGETOWN,1015,BRIDGETOWN,22,0,0,0,0,0,0,Não,Não,True,True,22,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99376,1,1315,YANGON,1015,YANGON,6,0,0,0,0,0,0,Não,Não,True,True,6,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99236,1,815,PUERTO QUIJARRO,1015,PUERTO QUIJARRO,8,0,0,0,0,0,0,Não,Não,True,True,8,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,29939,1,152,LIBREVILLE,1015,LIBREVILLE,18,0,0,0,0,0,0,Não,Não,True,True,18,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,38920,1,638,COTONOU,1015,COTONOU,8,0,0,0,0,0,0,Não,Não,True,True,8,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,29831,1,1983,ISLAMABADE,1015,ISLAMABADE,18,0,0,0,0,0,0,Não,Não,True,True,18,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,29963,1,180,LOMÉ,1015,LOMÉ,7,0,0,0,0,0,0,Não,Não,True,True,7,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99139,1,3120,TIRANA,1015,TIRANA - ALBANIA,9,0,0,0,0,0,0,Não,Não,True,True,9,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,99104,1,1011,TBILISI,1015,TBILISI,29,0,0,0,0,0,0,Não,Não,True,True,29,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.
+1,ZZ,39187,1,624,BRAZZAVILLE,1015,BRAZZAVILLE CONGO,2,0,0,0,0,0,0,Não,Não,True,True,2,Seção não instalada no exterior; aptos publicados sem comparecimento ou abstenção.

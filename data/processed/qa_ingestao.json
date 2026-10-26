@@ -1,0 +1,206 @@
+{
+  "gerado_em": "2026-10-26T07:28:54.378863-03:00",
+  "gerado_em_utc": "2026-10-26T10:28:54.378863+00:00",
+  "fonte": {
+    "turnos_votacao": [
+      1
+    ],
+    "turnos_detalhe": [
+      1
+    ],
+    "candidatos_por_numero": {
+      "13": [
+        "LUIZ INÁCIO LULA DA SILVA"
+      ],
+      "14": [
+        "RENAN ANTONIO FERREIRA DOS SANTOS"
+      ],
+      "16": [
+        "HERTZ DA CONCEICAO DIAS"
+      ],
+      "21": [
+        "EDMILSON SILVA COSTA"
+      ],
+      "22": [
+        "FLAVIO NANTES BOLSONARO"
+      ],
+      "27": [
+        "CLARIANA ZACARKIM BARAO"
+      ],
+      "28": [
+        "LEONARDO ALVES DE ARAUJO"
+      ],
+      "29": [
+        "RUI COSTA PIMENTA"
+      ],
+      "30": [
+        "ROMEU ZEMA NETO"
+      ],
+      "35": [
+        "WILSON GRASSI JUNIOR"
+      ],
+      "55": [
+        "RONALDO RAMOS CAIADO"
+      ],
+      "70": [
+        "AUGUSTO JORGE CURY"
+      ],
+      "80": [
+        "SAMARA MARTINS DA SILVA FEITOSA"
+      ],
+      "95": [
+        "VOTO BRANCO"
+      ],
+      "96": [
+        "VOTO NULO"
+      ]
+    },
+    "cargos_votacao": [
+      [
+        "1",
+        "Presidente"
+      ]
+    ],
+    "cargos_detalhe": [
+      [
+        "1",
+        "Presidente"
+      ]
+    ],
+    "politica_zero": "A fonte nominal só apresentou QT_VOTOS positivo. Ausência de linha para um candidato é interpretada como zero apenas na tabela larga; votos.parquet preserva exclusivamente as linhas publicadas.",
+    "observacao_turno_2": "O pipeline registra apenas os turnos presentes nos ZIPs oficiais no momento da execução. Não cria linhas para turno ausente."
+  },
+  "cobertura": {
+    "linhas_secoes": 499248,
+    "linhas_votos": 3800511,
+    "turnos": [
+      1
+    ],
+    "ufs": [
+      "AC",
+      "AL",
+      "AM",
+      "AP",
+      "BA",
+      "CE",
+      "DF",
+      "ES",
+      "GO",
+      "MA",
+      "MG",
+      "MS",
+      "MT",
+      "PA",
+      "PB",
+      "PE",
+      "PI",
+      "PR",
+      "RJ",
+      "RN",
+      "RO",
+      "RR",
+      "RS",
+      "SC",
+      "SE",
+      "SP",
+      "TO",
+      "ZZ"
+    ],
+    "secoes_por_turno": {
+      "1": 499248
+    },
+    "exterior": {
+      "codigo_uf": "ZZ",
+      "linhas": 1351,
+      "municipios": 186
+    }
+  },
+  "unicidade": {
+    "chave_secoes": [
+      "turno",
+      "uf",
+      "municipio_codigo",
+      "zona",
+      "secao"
+    ],
+    "duplicatas_secoes": 0,
+    "chave_votos": [
+      "turno",
+      "uf",
+      "municipio_codigo",
+      "zona",
+      "secao",
+      "numero"
+    ],
+    "duplicatas_votos": 0
+  },
+  "join": {
+    "detalhes_sem_linhas_nominais": 42,
+    "linhas_nominais_sem_detalhe": 0,
+    "join_validado": "one_to_one"
+  },
+  "checks": {
+    "aptos_igual_comparecimento_mais_abstencao": {
+      "conformes": 499207,
+      "divergentes": 41
+    },
+    "comparecimento_igual_validos_brancos_nulos_anulados": {
+      "conformes": 499248,
+      "divergentes": 0
+    },
+    "validos_igual_soma_candidatos": {
+      "conformes": 499248,
+      "divergentes": 0
+    },
+    "validos_igual_fonte_nominal": {
+      "conformes": 499248,
+      "divergentes": 0
+    },
+    "brancos_igual_fonte_nominal": {
+      "conformes": 499248,
+      "divergentes": 0
+    },
+    "nulos_igual_fonte_nominal": {
+      "conformes": 499248,
+      "divergentes": 0
+    },
+    "soma_votos_arquivo_igual_validos_brancos_nulos": {
+      "conformes": 499248,
+      "divergentes": 0
+    }
+  },
+  "faltantes": {
+    "turno": 0,
+    "uf": 0,
+    "municipio_codigo": 0,
+    "municipio_nome": 0,
+    "zona": 0,
+    "secao": 0,
+    "local_codigo": 0,
+    "local": 0,
+    "local_endereco": 0,
+    "aptos": 0,
+    "comparecimento": 0,
+    "abstencao": 0,
+    "validos": 0,
+    "brancos": 0,
+    "nulos": 0,
+    "anulados_apu_sep": 0,
+    "secao_instalada": 0,
+    "secao_anulada": 0,
+    "lula": 0,
+    "bolsonaro": 0,
+    "outros": 0,
+    "brancos_votos": 0,
+    "nulos_votos": 0,
+    "validos_votos": 0,
+    "soma_votos_arquivo": 0,
+    "participacao": 0,
+    "lula_validos": 42,
+    "bolsonaro_validos": 42,
+    "lula_aptos": 0,
+    "bolsonaro_aptos": 0
+  },
+  "ressalva_tte": "O catálogo do TSE informa 39 registros de eleitores em dupla vinculação de TTE. Nenhum valor foi subtraído das seções; os totais publicados foram preservados.",
+  "apto_para_analise": true
+}

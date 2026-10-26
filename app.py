@@ -188,15 +188,19 @@ def nome_candidato(numero: str, nome: str) -> str:
 def layout_grafico(fig: go.Figure, altura: int = 390) -> go.Figure:
     fig.update_layout(
         height=altura,
-        margin={"l": 20, "r": 20, "t": 45, "b": 20},
+        margin={"l": 20, "r": 20, "t": 105, "b": 20},
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="#FFFFFF",
         font={"family": "Source Sans 3", "color": "#263A42", "size": 14},
-        title_font={"color": PETROLEO, "size": 18},
+        title={
+            "font": {"color": PETROLEO, "size": 18},
+            "y": 0.98,
+            "yanchor": "top",
+        },
         legend={
             "orientation": "h",
             "yanchor": "bottom",
-            "y": 1.02,
+            "y": 1.08,
             "xanchor": "left",
             "x": 0,
         },

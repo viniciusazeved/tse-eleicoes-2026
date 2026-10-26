@@ -565,7 +565,7 @@ with tabs[0]:
 
     cabecalho_secao(
         "Cortes de participação elevada",
-        "Cortes cumulativos definidos em 90%, 95%, 98% e 100%. Cada linha contém as anteriores e, por isso, as linhas não podem ser somadas.",
+        "Cortes cumulativos definidos em 90%, 95%, 98% e 100%. Um corte menor inclui as seções dos cortes maiores; as linhas não podem ser somadas.",
     )
     cortes = consultar(
         f"""

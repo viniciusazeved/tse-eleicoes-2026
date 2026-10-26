@@ -2,6 +2,8 @@
 
 Dados públicos do TSE sobre comparecimento e votação para Presidente, com exploração por seção, zona, município e UF. Projeto independente, sem vínculo institucional com a Justiça Eleitoral.
 
+[Abrir o painel publicado](https://observatorio-voto-2026.streamlit.app/) · [Ler o relatório inicial](reports/RELATORIO.md) · [Conferência independente](docs/REVISAO_INDEPENDENTE.md)
+
 A hipótese examinada é a associação entre participação eleitoral e apoio às candidaturas. Padrões estatísticos não identificam voto em nome de ausentes. Horários dos logs não revelam candidato. Consulte [METODOLOGIA.md](METODOLOGIA.md).
 
 ## Cobertura inicial

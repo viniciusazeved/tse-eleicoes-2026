@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import logging
 from pathlib import Path
 
@@ -16,9 +17,11 @@ REGIOES = {
     "Sul": ["PR", "RS", "SC"],
     "Centro-Oeste": ["DF", "GO", "MS", "MT"],
 }
+SOURCE_DEFAULT = ROOT / "data/processed/secoes.parquet"
+OUTPUT_DEFAULT = ROOT / "reports/geografia_comparecimento.csv"
 
 
-def main() -> None:
+def executar(source: Path, turno: int, output: Path) -> pd.DataFrame:
     """Conta seções por limite de abstenção, mantendo denominadores explícitos."""
     cols = [
         "turno",
@@ -30,8 +33,10 @@ def main() -> None:
         "abstencao",
         "comparecimento",
     ]
-    data = pd.read_parquet(ROOT / "data/processed/secoes.parquet", columns=cols)
-    data = data.loc[(data.turno == 1) & (data.uf != "ZZ")].copy()
+    data = pd.read_parquet(source, columns=cols)
+    data = data.loc[(data.turno == turno) & (data.uf != "ZZ")].copy()
+    if data.empty:
+        raise ValueError(f"Nenhuma seção encontrada para o turno {turno}.")
     if data.duplicated(cols[:5]).any():
         raise ValueError("Chaves de seção duplicadas.")
     if not (data.aptos > 0).all():
@@ -54,7 +59,7 @@ def main() -> None:
             n_corte = int((selected & regional).sum())
             rows.append(
                 {
-                    "turno": 1,
+                    "turno": turno,
                     "abstencao_max_pct": limite,
                     "regiao": regiao,
                     "secoes_regiao": n_total,
@@ -67,11 +72,28 @@ def main() -> None:
                 }
             )
     result = pd.DataFrame(rows)
-    result.to_csv(ROOT / "reports/geografia_comparecimento.csv", index=False)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    result.to_csv(output, index=False)
     LOGGER.info(
         "Contagens territoriais: %s",
         result.to_json(orient="records", force_ascii=False),
     )
+    return result
+
+
+def criar_parser() -> argparse.ArgumentParser:
+    """Cria os argumentos da análise territorial."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source", type=Path, default=SOURCE_DEFAULT)
+    parser.add_argument("--turno", type=int, default=1, choices=(1, 2))
+    parser.add_argument("--output", type=Path, default=OUTPUT_DEFAULT)
+    return parser
+
+
+def main() -> None:
+    """Executa a análise a partir dos argumentos de linha de comando."""
+    args = criar_parser().parse_args()
+    executar(args.source.resolve(), args.turno, args.output.resolve())
 
 
 if __name__ == "__main__":

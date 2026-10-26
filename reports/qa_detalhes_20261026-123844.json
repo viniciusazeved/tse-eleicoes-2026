@@ -1,0 +1,790 @@
+{
+  "gerado_em": "2026-10-26T12:45:26.967762-03:00",
+  "gerado_em_utc": "2026-10-26T15:45:26.967762+00:00",
+  "escopo": "Inspeção estrutural, contábil e de disponibilidade. Nenhum campo nominal de candidato foi lido ou analisado.",
+  "fonte": {
+    "caminho": "D:\\Projetos\\TSE\\data\\raw\\versoes\\20261026-123844\\detalhe_votacao_secao_2026.zip",
+    "bytes": 234357769,
+    "sha256": "8ef9ce3a85cde260471faf7a83a9b4f5ccf3993fdda942aacaa658574344789c",
+    "modificado_em_local": "2026-10-26T12:44:34.294243-03:00",
+    "membros": [
+      {
+        "nome": "detalhe_votacao_secao_2026_AP.csv",
+        "bytes_descompactados": 2754850,
+        "bytes_comprimidos": 210873
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_BR.csv",
+        "bytes_descompactados": 351831261,
+        "bytes_comprimidos": 61225265
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_BA.csv",
+        "bytes_descompactados": 52881167,
+        "bytes_comprimidos": 4378224
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_AL.csv",
+        "bytes_descompactados": 10385170,
+        "bytes_comprimidos": 866896
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_BRASIL.csv",
+        "bytes_descompactados": 1090620422,
+        "bytes_comprimidos": 110694639
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_AC.csv",
+        "bytes_descompactados": 4006541,
+        "bytes_comprimidos": 380400
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_AM.csv",
+        "bytes_descompactados": 14439302,
+        "bytes_comprimidos": 1423850
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_CE.csv",
+        "bytes_descompactados": 33410571,
+        "bytes_comprimidos": 2870152
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_DF.csv",
+        "bytes_descompactados": 12645533,
+        "bytes_comprimidos": 1038429
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_ES.csv",
+        "bytes_descompactados": 17623155,
+        "bytes_comprimidos": 1697906
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_GO.csv",
+        "bytes_descompactados": 23384412,
+        "bytes_comprimidos": 1954210
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_MA.csv",
+        "bytes_descompactados": 25886693,
+        "bytes_comprimidos": 2147163
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_MG.csv",
+        "bytes_descompactados": 76572304,
+        "bytes_comprimidos": 6511060
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_MS.csv",
+        "bytes_descompactados": 10404618,
+        "bytes_comprimidos": 833164
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_MT.csv",
+        "bytes_descompactados": 12267191,
+        "bytes_comprimidos": 1009028
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_PA.csv",
+        "bytes_descompactados": 29059600,
+        "bytes_comprimidos": 2505819
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_PB.csv",
+        "bytes_descompactados": 15765923,
+        "bytes_comprimidos": 1335311
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_PE.csv",
+        "bytes_descompactados": 31258483,
+        "bytes_comprimidos": 2627961
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_PI.csv",
+        "bytes_descompactados": 14659964,
+        "bytes_comprimidos": 1214803
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_PR.csv",
+        "bytes_descompactados": 39790087,
+        "bytes_comprimidos": 3353512
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_RJ.csv",
+        "bytes_descompactados": 55799205,
+        "bytes_comprimidos": 4542475
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_RN.csv",
+        "bytes_descompactados": 15232294,
+        "bytes_comprimidos": 1358900
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_RO.csv",
+        "bytes_descompactados": 6868211,
+        "bytes_comprimidos": 540563
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_RR.csv",
+        "bytes_descompactados": 2237063,
+        "bytes_comprimidos": 169224
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_SE.csv",
+        "bytes_descompactados": 8642037,
+        "bytes_comprimidos": 710830
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_RS.csv",
+        "bytes_descompactados": 40619554,
+        "bytes_comprimidos": 3329666
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_SC.csv",
+        "bytes_descompactados": 25920597,
+        "bytes_comprimidos": 2136690
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_SP.csv",
+        "bytes_descompactados": 148259861,
+        "bytes_comprimidos": 12420901
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_TO.csv",
+        "bytes_descompactados": 8031137,
+        "bytes_comprimidos": 752609
+      },
+      {
+        "nome": "detalhe_votacao_secao_2026_ZZ.csv",
+        "bytes_descompactados": 606,
+        "bytes_comprimidos": 244
+      },
+      {
+        "nome": "leiame.pdf",
+        "bytes_descompactados": 123650,
+        "bytes_comprimidos": 112616
+      }
+    ]
+  },
+  "conteudo": {
+    "linhas_brutas": 998496,
+    "linhas_presidente": 998496,
+    "anos": [
+      "2026"
+    ],
+    "tipos_eleicao": [
+      [
+        "2",
+        "Eleição Ordinária"
+      ]
+    ],
+    "eleicoes": [
+      [
+        "6257",
+        "Eleição Geral Federal 2026"
+      ],
+      [
+        "6258",
+        "Eleição Geral Federal 2026"
+      ]
+    ],
+    "cargos": [
+      [
+        "1",
+        "Presidente"
+      ]
+    ],
+    "geracoes": [
+      [
+        "26/10/2026",
+        "09:49:06"
+      ]
+    ],
+    "turnos": [
+      1,
+      2
+    ]
+  },
+  "staging": {
+    "caminho": "D:\\Projetos\\TSE\\data\\interim\\20261026-123844\\detalhes_presidente.parquet",
+    "linhas": 998496,
+    "promovido": false
+  },
+  "estrutura": {
+    "chave": [
+      "turno",
+      "uf",
+      "municipio_codigo",
+      "zona",
+      "secao"
+    ],
+    "duplicatas": 0,
+    "duplicatas_exemplos": [],
+    "faltantes": {
+      "turno": 0,
+      "uf": 0,
+      "municipio_codigo": 0,
+      "municipio_nome": 0,
+      "zona": 0,
+      "secao": 0,
+      "local_codigo": 0,
+      "local": 0,
+      "local_endereco": 0,
+      "aptos": 0,
+      "comparecimento": 0,
+      "abstencao": 0,
+      "validos": 0,
+      "brancos": 0,
+      "nulos": 0,
+      "secao_instalada": 0,
+      "secao_anulada": 0
+    },
+    "checks": {
+      "aptos_igual_comparecimento_mais_abstencao": {
+        "conformes": 998414,
+        "divergentes": 82
+      },
+      "comparecimento_igual_validos_mais_brancos_mais_nulos": {
+        "conformes": 998496,
+        "divergentes": 0
+      },
+      "metricas_nao_negativas": {
+        "conformes": 998496,
+        "divergentes": 0
+      },
+      "comparecimento_menor_ou_igual_aptos": {
+        "conformes": 998496,
+        "divergentes": 0
+      }
+    },
+    "excecoes_aptos": [
+      {
+        "turno": 1,
+        "uf": "ZZ",
+        "municipio_codigo": "29424",
+        "zona": "1",
+        "secao": "54",
+        "aptos": 22,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 2,
+        "uf": "ZZ",
+        "municipio_codigo": "99104",
+        "zona": "1",
+        "secao": "1011",
+        "aptos": 29,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 1,
+        "uf": "ZZ",
+        "municipio_codigo": "99341",
+        "zona": "1",
+        "secao": "1308",
+        "aptos": 6,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 2,
+        "uf": "ZZ",
+        "municipio_codigo": "30929",
+        "zona": "1",
+        "secao": "722",
+        "aptos": 12,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 1,
+        "uf": "ZZ",
+        "municipio_codigo": "29769",
+        "zona": "1",
+        "secao": "126",
+        "aptos": 7,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 2,
+        "uf": "ZZ",
+        "municipio_codigo": "30669",
+        "zona": "1",
+        "secao": "546",
+        "aptos": 10,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 2,
+        "uf": "ZZ",
+        "municipio_codigo": "29815",
+        "zona": "1",
+        "secao": "140",
+        "aptos": 14,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 1,
+        "uf": "ZZ",
+        "municipio_codigo": "38903",
+        "zona": "1",
+        "secao": "603",
+        "aptos": 5,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 1,
+        "uf": "ZZ",
+        "municipio_codigo": "99104",
+        "zona": "1",
+        "secao": "1011",
+        "aptos": 29,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 2,
+        "uf": "ZZ",
+        "municipio_codigo": "38903",
+        "zona": "1",
+        "secao": "603",
+        "aptos": 5,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 1,
+        "uf": "ZZ",
+        "municipio_codigo": "29831",
+        "zona": "1",
+        "secao": "1983",
+        "aptos": 18,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 2,
+        "uf": "ZZ",
+        "municipio_codigo": "29963",
+        "zona": "1",
+        "secao": "180",
+        "aptos": 7,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 2,
+        "uf": "ZZ",
+        "municipio_codigo": "39128",
+        "zona": "1",
+        "secao": "3208",
+        "aptos": 5,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 1,
+        "uf": "ZZ",
+        "municipio_codigo": "29963",
+        "zona": "1",
+        "secao": "180",
+        "aptos": 7,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 1,
+        "uf": "ZZ",
+        "municipio_codigo": "38920",
+        "zona": "1",
+        "secao": "638",
+        "aptos": 8,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 1,
+        "uf": "ZZ",
+        "municipio_codigo": "38989",
+        "zona": "1",
+        "secao": "1841",
+        "aptos": 13,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 2,
+        "uf": "ZZ",
+        "municipio_codigo": "99210",
+        "zona": "1",
+        "secao": "3013",
+        "aptos": 1,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 2,
+        "uf": "ZZ",
+        "municipio_codigo": "39225",
+        "zona": "1",
+        "secao": "931",
+        "aptos": 18,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 1,
+        "uf": "ZZ",
+        "municipio_codigo": "99325",
+        "zona": "1",
+        "secao": "3016",
+        "aptos": 3,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      },
+      {
+        "turno": 1,
+        "uf": "ZZ",
+        "municipio_codigo": "99295",
+        "zona": "1",
+        "secao": "3485",
+        "aptos": 1,
+        "comparecimento": 0,
+        "abstencao": 0,
+        "validos": 0,
+        "brancos": 0,
+        "nulos": 0,
+        "secao_instalada": "Não",
+        "secao_anulada": "Não"
+      }
+    ],
+    "excecoes_votos": [],
+    "por_turno": {
+      "1": {
+        "secoes": 499248,
+        "ufs": [
+          "AC",
+          "AL",
+          "AM",
+          "AP",
+          "BA",
+          "CE",
+          "DF",
+          "ES",
+          "GO",
+          "MA",
+          "MG",
+          "MS",
+          "MT",
+          "PA",
+          "PB",
+          "PE",
+          "PI",
+          "PR",
+          "RJ",
+          "RN",
+          "RO",
+          "RR",
+          "RS",
+          "SC",
+          "SE",
+          "SP",
+          "TO",
+          "ZZ"
+        ],
+        "municipios": 5757,
+        "zonas": 6292,
+        "totais": {
+          "aptos": 158745502,
+          "comparecimento": 125275835,
+          "abstencao": 33469244,
+          "validos": 119306034,
+          "brancos": 2300798,
+          "nulos": 3669003
+        },
+        "situacao_instalada": {
+          "Sim": 499207,
+          "Não": 41
+        },
+        "situacao_anulada": {
+          "Não": 499248
+        }
+      },
+      "2": {
+        "secoes": 499248,
+        "ufs": [
+          "AC",
+          "AL",
+          "AM",
+          "AP",
+          "BA",
+          "CE",
+          "DF",
+          "ES",
+          "GO",
+          "MA",
+          "MG",
+          "MS",
+          "MT",
+          "PA",
+          "PB",
+          "PE",
+          "PI",
+          "PR",
+          "RJ",
+          "RN",
+          "RO",
+          "RR",
+          "RS",
+          "SC",
+          "SE",
+          "SP",
+          "TO",
+          "ZZ"
+        ],
+        "municipios": 5757,
+        "zonas": 6292,
+        "totais": {
+          "aptos": 158745502,
+          "comparecimento": 128236074,
+          "abstencao": 30509005,
+          "validos": 124082273,
+          "brancos": 1430496,
+          "nulos": 2723305
+        },
+        "situacao_instalada": {
+          "Sim": 499207,
+          "Não": 41
+        },
+        "situacao_anulada": {
+          "Não": 499248
+        }
+      }
+    }
+  },
+  "exterior": {
+    "linhas": 2702,
+    "por_turno": {
+      "1": {
+        "secoes": 1351,
+        "aptos": 916534,
+        "comparecimento": 341766,
+        "abstencao": 574345,
+        "nao_instaladas": 41
+      },
+      "2": {
+        "secoes": 1351,
+        "aptos": 916683,
+        "comparecimento": 381443,
+        "abstencao": 534817,
+        "nao_instaladas": 41
+      }
+    },
+    "aptos_divergentes": 82,
+    "votos_divergentes": 0
+  },
+  "reconciliacao_turno2_zonas": {
+    "chave": [
+      "turno",
+      "uf",
+      "municipio_codigo",
+      "zona"
+    ],
+    "linhas_esquerda": 6292,
+    "linhas_direita": 6292,
+    "chaves_em_ambas": 6292,
+    "apenas_esquerda": 0,
+    "apenas_direita": 0,
+    "linhas_com_alguma_divergencia": 0,
+    "metricas": {
+      "aptos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "comparecimento": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "abstencao": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "validos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "brancos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "nulos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      }
+    },
+    "exemplos_apenas_esquerda": [],
+    "exemplos_apenas_direita": [],
+    "exemplos_divergencias": []
+  },
+  "integridade_turno1_publicado": {
+    "chave": [
+      "turno",
+      "uf",
+      "municipio_codigo",
+      "zona",
+      "secao"
+    ],
+    "linhas_esquerda": 499248,
+    "linhas_direita": 499248,
+    "chaves_em_ambas": 499248,
+    "apenas_esquerda": 0,
+    "apenas_direita": 0,
+    "linhas_com_alguma_divergencia": 0,
+    "metricas": {
+      "aptos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "comparecimento": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "abstencao": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "validos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "brancos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      },
+      "nulos": {
+        "divergentes": 0,
+        "soma_delta": 0,
+        "max_abs_delta": 0
+      }
+    },
+    "exemplos_apenas_esquerda": [],
+    "exemplos_apenas_direita": [],
+    "exemplos_divergencias": []
+  },
+  "limites": [
+    "A inspeção não usa votação nominal nem compara candidaturas.",
+    "O staging não substitui os arquivos publicados.",
+    "A reconciliação do segundo turno usa somente métricas contábeis agregadas."
+  ]
+}
